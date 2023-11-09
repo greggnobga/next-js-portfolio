@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gotham {
+  @apply bg-gradient-to-t from-slate-800 via-slate-900 to-gray-950;
+}
+
+.nav-hover {
+  @apply hover:text-blue-700 hover:border-blue-700;
+}
+
+.nav-border {
+  @apply border-b border-slate-400 border-opacity-50 mr-1 ml-1 cursor-pointer;
+}
