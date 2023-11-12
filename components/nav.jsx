@@ -59,8 +59,8 @@ export default function Nav() {
             <Link href='/' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
               <Sprite id='home' /> Home
             </Link>
-            <Link href='/projects' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
-              <Sprite id='projects' /> Projects
+            <Link href='/project' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
+              <Sprite id='project' /> Project
             </Link>
             <Link href='/about' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
               <Sprite id='about' /> About
@@ -78,8 +78,8 @@ export default function Nav() {
           <Link href='/' className='p-2 nav-border nav-hover'>
             <Sprite id='home' /> Home
           </Link>
-          <Link href='/projects' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
-            <Sprite id='projects' /> Projects
+          <Link href='/project' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
+            <Sprite id='project' /> Project
           </Link>
           <Link href='/about' className='p-2 nav-border nav-hover'>
             <Sprite id='about' /> About

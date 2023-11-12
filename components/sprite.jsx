@@ -1,7 +1,7 @@
-const Sprite = ({ id, width, height }) => {
+const Sprite = ({ id }) => {
   return (
-    <svg className={`${width ? width : 'w-5'} ${height ? height : 'h-5'} -mt-1 inline fill-current`}>
-      <use href={`/icons/sprite.svg#${id}`} />
+    <svg className='w-4 h-4 -mt-1 inline fill-current'>
+      <use href={`/images/sprite.svg#${id}`} />
     </svg>
   );
 };
