@@ -9,7 +9,9 @@ export default function Footer() {
     <footer className='bg-slate-900'>
       <div className='p-2 grid grid-cols-1 sm:grid-cols-3'>
         <div className='p-2 font-thin text-sm w-full'>
-          <h1 className='uppercase'>Resources</h1>
+          <h1 className='uppercase'>
+            <span className='text-green-400'>/</span> Resources
+          </h1>
           <hr className='w-full h-px my-1 bg-gray-200 border-0 dark:bg-gray-700' />
           <Link href='/'>
             <span className='py-2 w-full block border-b border-gray-700 border-opacity-40'>
@@ -38,7 +40,9 @@ export default function Footer() {
           </Link>
         </div>
         <div className='p-2 font-thin text-sm w-full'>
-          <h1 className='uppercase'>Socials</h1>
+          <h1 className='uppercase'>
+            <span className='text-green-400'>/</span> Socials
+          </h1>
           <hr className='w-full h-px my-1 bg-gray-200 border-0 dark:bg-gray-700' />
           <Link href='#'>
             <span className='py-2 w-full block border-b border-gray-700 border-opacity-40'>
@@ -62,12 +66,14 @@ export default function Footer() {
           </Link>
           <Link href='#'>
             <span className='py-2 w-full block border-b border-gray-700 border-opacity-40'>
-              <Sprite id='tiktok' /> Tiktok
+              <Sprite id='linked' /> LinkedIn
             </span>
           </Link>
         </div>
         <div className='p-2 font-thin text-sm w-full h-[25vh] sm:=h-full'>
-          <h1 className='uppercase'>Contact Me</h1>
+          <h1 className='uppercase'>
+            <span className='text-green-400'>/</span> Contact Me
+          </h1>
           <hr className='w-full h-px my-1 bg-gray-200 border-0 dark:bg-gray-700' />
           <div className='grid grid-cols-1 place-items-center align-middle w-full h-full'>
             <Link href='/contact'>Send Orion A Message</Link>

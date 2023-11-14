@@ -50,7 +50,7 @@ export default function Home() {
       <div className='grid grid-cols-1 place-items-start bg-slate-700 bg-opacity-20 w-full h-[50vh]'>
         <div className='p-0'>
           <h3 className='p-2 font-thin uppercase text-sm'>
-            <span className='text-green-400'>/</span> Dev Stacks
+            <span className='text-green-400'>/</span> Dev Stack
           </h3>
         </div>
         <div className='grid grid-cols-3 place-items-center w-full'>

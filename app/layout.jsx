@@ -21,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={`gotham text-slate-200 leading-5`}>
+      <body className={`gotham text-slate-300 leading-5`}>
         <main className='h-m-screen'>
           <Nav />
           {children}

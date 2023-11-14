@@ -11,7 +11,9 @@ export default function Hero() {
         <div className='col-span-4'>
           <div className='mt-4'>
             <hr className='w-24 h-px my-2 bg-gray-200 border-0 dark:bg-gray-700' />
-            <h1 className='text-4xl p-2'>Hello, I'm Orion, a web developer</h1>
+            <h1 className='text-4xl p-2'>
+              Hello! I'm Orion, a <span className='text-green-400'>web developer</span>.
+            </h1>
             <p className='text-xs text-justify p-2'>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -69,7 +71,7 @@ export default function Hero() {
               <Sprite id='twitter' />
             </Link>
             <Link href='#' className='p-2 nav-border nav-hover'>
-              <Sprite id='tiktok' />
+              <Sprite id='linked' />
             </Link>
           </div>
         </div>
