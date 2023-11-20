@@ -114,7 +114,7 @@ export default function Home() {
           <Card
             title='Portfolio Trade App'
             image='/images/trade.png'
-            link='/project/1'
+            link='/project/2'
             description='A Laravel React Plus Tailwind application will track stock price changes and allow the user to manage portfolio holdings.'
             badge={['laravel', 'mysql', 'react', 'tailwind']}
           />
@@ -122,7 +122,7 @@ export default function Home() {
           <Card
             title='Portfolio Trade App'
             image='/images/trade.png'
-            link='/project/1'
+            link='/project/3'
             description='A Laravel React Plus Tailwind application will track stock price changes and allow the user to manage portfolio holdings.'
             badge={['laravel', 'mysql', 'react', 'tailwind']}
           />

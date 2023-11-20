@@ -16,7 +16,7 @@ export default function Card({ image, link, title, description, badge }) {
           {badge.map((item, id) => {
             return (
               <span
-                key='id'
+                key={id}
                 className='bg-gray-100 text-gray-800 text-xs font-medium me-1 px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-gray-400 border border-gray-500'>
                 {item}
               </span>

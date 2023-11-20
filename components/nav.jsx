@@ -3,11 +3,15 @@
 /** React. */
 import { useState, useEffect } from 'react';
 
-/** Next. */
+/** Vendor. */
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 
 /** Hooks. */
 import useScreen from '../hooks/use-screen';
+
+/** Action. */
+import { authUser } from '../redux/actions/user-actions.js';
 
 /** Components. */
 import Sprite from './sprite';
@@ -25,6 +29,13 @@ export default function Nav() {
     setHidden((prev) => !prev);
   }
 
+  /** Define dispatch. */
+  const dispatch = useDispatch();
+
+  /** Select state from redux. */
+  const userAuth = useSelector((state) => state.userAuth);
+  const { loading, success, error } = userAuth;
+
   /** Use effect to monitor screen hook changes. */
   useEffect(() => {
     if (screen.isMobile) {
@@ -32,7 +43,11 @@ export default function Nav() {
     } else {
       setMobile(false);
     }
-  }, [screen]);
+
+    dispatch(authUser());
+  }, [loading, success, error]);
+
+  console.log(loading, success, error);
 
   /** Return something. */
   return (
