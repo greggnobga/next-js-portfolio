@@ -43,7 +43,9 @@ export default function Nav() {
     } else {
       setMobile(false);
     }
+  }, [screen]);
 
+  useEffect(() => {
     dispatch(authUser());
   }, [loading, success, error]);
 

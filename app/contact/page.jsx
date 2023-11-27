@@ -1,13 +1,56 @@
 'use client';
 
+/** React. */
+import { useEffect } from 'react';
+
+/** Hook. */
+import useValidator from '../../hooks/use-validator';
+
 export default function Contact() {
+  /** Map html element to validate hook. */
+  const {
+    value: email,
+    hasError: emailHasError,
+    isValid: emailIsValid,
+    valueChangeHandler: emailChangeHandler,
+    inputBlurHandler: emailBlurHandler,
+    resetHandler: emailInputReset,
+  } = useValidator((value) => value.trim() !== '' && value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/));
+
+  const {
+    value: name,
+    hasError: nameHasError,
+    isValid: nameIsValid,
+    valueChangeHandler: nameChangeHandler,
+    inputBlurHandler: nameBlurHandler,
+    resetHandler: nameInputReset,
+  } = useValidator((value) => value.trim() !== '' && value.match(/^[ A-Za-z0-9!@#$%^&*()_+]*$/));
+
+  const {
+    value: message,
+    hasError: messageHasError,
+    isValid: messageIsValid,
+    valueChangeHandler: messageChangeHandler,
+    inputBlurHandler: messageBlurHandler,
+    resetHandler: messageInputReset,
+  } = useValidator((value) => value.trim() !== '' && value.match(/^[ A-Za-z0-9.'?!,@$#\-_]*$/));
+
+  /** Change class logic if valid or otherwise. */
+  const nameInputClasses = nameHasError ? 'input-error' : 'input-success';
+  const emailInputClasses = emailHasError ? 'input-error' : 'input-success';
+  const messageInputClasses = messageHasError ? 'input-error' : 'input-success';
+
   /** Submit hanndler. */
   function submitHandler(e) {
     e.preventDefault();
     console.log('Clicked submit.');
   }
-  /** Return something. */
 
+  useEffect(() => {
+    fetch('/api/projects');
+  }, []);
+
+  /** Return something. */
   return (
     <section className='p-2 flex min-h-screen flex-col gap-2'>
       <h1 className='p-2 font-thin uppercase text-sm'>
@@ -17,31 +60,37 @@ export default function Contact() {
         <form onSubmit={submitHandler}>
           <div className='relative z-0 w-full mb-6 group'>
             <input
-              type='email'
-              name='email'
+              className={`peer ${emailInputClasses}`}
               id='email'
-              className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer'
-              placeholder=' '
+              name='email'
+              type='email'
+              value={email}
+              onChange={emailChangeHandler}
+              onBlur={emailBlurHandler}
+              autoComplete='off'
+              placeholder=''
               required
             />
-            <label
-              htmlFor='email'
-              className='peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>
+            {emailHasError && <p className='input-message'>Please enter a valid email.</p>}
+            <label htmlFor='email' className='peer-focus:font-medium input-label'>
               Email address
             </label>
           </div>
           <div className='relative z-0 w-full mb-6 group'>
             <input
-              type='text'
-              name='name'
+              className={`peer ${nameInputClasses}`}
               id='name'
-              className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer'
-              placeholder=' '
+              name='name'
+              type='text'
+              value={name}
+              onChange={nameChangeHandler}
+              onBlur={nameBlurHandler}
+              autoComplete='off'
+              placeholder=''
               required
             />
-            <label
-              htmlFor='name'
-              className='peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>
+            {nameHasError && <p className='input-message'>Please enter a valid name.</p>}
+            <label htmlFor='name' className='peer-focus:font-medium input-label'>
               Name
             </label>
           </div>
@@ -51,14 +100,20 @@ export default function Contact() {
               Your message
             </label>
             <textarea
+              className={messageInputClasses}
               id='message'
-              rows='4'
-              className='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500'
-              placeholder='Leave a comment...'></textarea>
+              name='message'
+              type='message'
+              rows='6'
+              value={message}
+              onChange={messageChangeHandler}
+              onBlur={messageBlurHandler}
+              autoComplete='off'
+              placeholder='Type your message here.'
+              required></textarea>
+            {messageHasError && <p className='input-message'>One of the characters you entered is not allowed.</p>}
           </div>
-          <button
-            type='submit'
-            className='text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800'>
+          <button type='submit' className='button-primary'>
             Send Message
           </button>
         </form>
