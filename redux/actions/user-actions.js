@@ -1,6 +1,6 @@
 import { USER_AUTH_REQUEST, USER_AUTH_SUCCESS, USER_AUTH_FAILURE } from '../constants/user-constants';
 
-export const authUser = (token) => async (dispatch) => {
+export const authUser = () => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_AUTH_REQUEST, payload: { loading: true, success: 'Test request payload.' } });
 

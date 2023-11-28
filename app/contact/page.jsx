@@ -3,6 +3,12 @@
 /** React. */
 import { useEffect } from 'react';
 
+/* Vendor. */
+import { useDispatch } from 'react-redux';
+
+/** Action. */
+import { messageContact } from '../../redux/actions/contact-actions';
+
 /** Hook. */
 import useValidator from '../../hooks/use-validator';
 
@@ -40,19 +46,39 @@ export default function Contact() {
   const emailInputClasses = emailHasError ? 'input-error' : 'input-success';
   const messageInputClasses = messageHasError ? 'input-error' : 'input-success';
 
+  /** Set overall form validity. */
+  let formIsValid = false;
+  if (nameIsValid && messageIsValid) {
+    formIsValid = true;
+  }
+
+  /** Use dispatch. */
+  const dispatch = useDispatch();
+
   /** Submit hanndler. */
   function submitHandler(e) {
     e.preventDefault();
-    console.log('Clicked submit.');
-  }
 
-  useEffect(() => {
-    fetch('/api/projects');
-  }, []);
+    /** Change blur state. */
+    emailBlurHandler(true);
+    nameBlurHandler(true);
+    messageBlurHandler(true);
+
+    /** Check if there is invalid input. */
+    if (!emailIsValid && !nameIsValid && !messageIsValid) return;
+
+    /** Dispatch actions. */
+    dispatch(messageContact({ email, name, message }));
+
+    /** Reset input. */
+    emailInputReset();
+    nameInputReset();
+    messageInputReset();
+  }
 
   /** Return something. */
   return (
-    <section className='p-2 flex min-h-screen flex-col gap-2'>
+    <section className='p-2 flex min-h-screen flex-col gap-2 z-10'>
       <h1 className='p-2 font-thin uppercase text-sm'>
         <span className='text-green-400'>/</span> Contact
       </h1>
@@ -113,7 +139,7 @@ export default function Contact() {
               required></textarea>
             {messageHasError && <p className='input-message'>One of the characters you entered is not allowed.</p>}
           </div>
-          <button type='submit' className='button-primary'>
+          <button type='submit' className='button-primary' disabled={!formIsValid}>
             Send Message
           </button>
         </form>

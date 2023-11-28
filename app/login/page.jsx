@@ -1,14 +1,54 @@
 'use client';
 
+/** React. */
+import { useEffect } from 'react';
+
+/** Hook. */
+import useValidator from '../../hooks/use-validator';
+
 export default function Login() {
+  /** Map html element to validate hook. */
+  const {
+    value: email,
+    hasError: emailHasError,
+    isValid: emailIsValid,
+    valueChangeHandler: emailChangeHandler,
+    inputBlurHandler: emailBlurHandler,
+    resetHandler: emailInputReset,
+  } = useValidator((value) => value.trim() !== '' && value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/));
+
+  const {
+    value: password,
+    hasError: passwordHasError,
+    isValid: passwordIsValid,
+    valueChangeHandler: passwordChangeHandler,
+    inputBlurHandler: passwordBlurHandler,
+    resetHandler: passwordInputReset,
+  } = useValidator((value) => value.trim() !== '' && value.match(/^[ A-Za-z0-9!@#$%^&*()_+]*$/));
+
+  /** Change class logic if valid or otherwise. */
+  const emailInputClasses = emailHasError ? 'input-error' : 'input-success';
+  const passwordInputClasses = passwordHasError ? 'input-error' : 'input-success';
+
+  /** Set overall form validity. */
+  let formIsValid = false;
+  if (emailIsValid && passwordIsValid) {
+    formIsValid = true;
+  }
+
   /** Submit hanndler. */
   function submitHandler(e) {
     e.preventDefault();
     console.log('Clicked submit.');
   }
+
+  useEffect(() => {
+    fetch('/api/projects');
+  }, []);
+
   /** Return something. */
   return (
-    <section className='p-2 flex min-h-screen flex-col gap-2'>
+    <section className='p-2 flex min-h-screen flex-col gap-2 z-10'>
       <h1 className='p-2 font-thin uppercase text-sm'>
         <span className='text-green-400'>/</span> Login
       </h1>
@@ -16,37 +56,41 @@ export default function Login() {
         <form onSubmit={submitHandler}>
           <div className='relative z-0 w-full mb-6 group'>
             <input
-              type='email'
-              name='email'
+              className={`peer ${emailInputClasses}`}
               id='email'
-              className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer'
-              placeholder=' '
+              name='email'
+              type='email'
+              value={email}
+              onChange={emailChangeHandler}
+              onBlur={emailBlurHandler}
+              autoComplete='off'
+              placeholder=''
               required
             />
-            <label
-              htmlFor='email'
-              className='peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>
+            {emailHasError && <p className='input-message'>Please enter a valid email.</p>}
+            <label htmlFor='email' className='peer-focus:font-medium input-label'>
               Email address
             </label>
           </div>
           <div className='relative z-0 w-full mb-6 group'>
             <input
-              type='password'
-              name='password'
+              className={`peer ${passwordInputClasses}`}
               id='password'
-              className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer'
-              placeholder=' '
+              name='password'
+              type='password'
+              value={password}
+              onChange={passwordChangeHandler}
+              onBlur={passwordBlurHandler}
+              autoComplete='off'
+              placeholder=''
               required
             />
-            <label
-              htmlFor='password'
-              className='peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>
-              Pasword
+            {passwordHasError && <p className='input-message'>Please enter a valid password.</p>}
+            <label htmlFor='email' className='peer-focus:font-medium input-label'>
+              Password
             </label>
           </div>
-          <button
-            type='submit'
-            className='text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800'>
+          <button type='submit' className='button-primary' disabled={!formIsValid}>
             Login
           </button>
         </form>

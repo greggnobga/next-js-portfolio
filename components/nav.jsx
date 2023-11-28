@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 
 /** Vendor. */
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Link from 'next/link';
 
 /** Hooks. */
@@ -29,27 +29,20 @@ export default function Nav() {
     setHidden((prev) => !prev);
   }
 
-  /** Define dispatch. */
-  const dispatch = useDispatch();
-
   /** Select state from redux. */
   const userAuth = useSelector((state) => state.userAuth);
-  const { loading, success, error } = userAuth;
+  const { success } = userAuth;
 
   /** Use effect to monitor screen hook changes. */
   useEffect(() => {
+    /** Switch navigation depends on screen size. */
     if (screen.isMobile) {
       setMobile(true);
+      return;
     } else {
       setMobile(false);
     }
   }, [screen]);
-
-  useEffect(() => {
-    dispatch(authUser());
-  }, [loading, success, error]);
-
-  console.log(loading, success, error);
 
   /** Return something. */
   return (
@@ -72,7 +65,7 @@ export default function Nav() {
           ''
         ) : (
           <div
-            className={`flex flex-col absolute top-12 z-100 bg-slate-900 border border-slate-400 border-opacity-50 rounded-sm text-xs justify-start m-2 w-11/12`}>
+            className={`flex flex-col absolute top-12 z-100 bg-slate-900 border border-slate-400 border-opacity-50 rounded-sm text-xs justify-start m-2 w-11/12 z-50`}>
             <Link href='/' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
               <Sprite id='home' /> Home
             </Link>
@@ -85,13 +78,19 @@ export default function Nav() {
             <Link href='/contact' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
               <Sprite id='contact' /> Contact
             </Link>
-            <Link href='/login' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
-              <Sprite id='login' /> Login
-            </Link>
+            {success ? (
+              <Link href='/logout' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
+                <Sprite id='logout' /> Logout
+              </Link>
+            ) : (
+              <Link href='/login' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
+                <Sprite id='login' /> Login
+              </Link>
+            )}
           </div>
         )
       ) : (
-        <div className={`flex flex-row justify-end m-2 w-11/12 text-xs`}>
+        <div className={`flex flex-row justify-end m-2 w-11/12 text-xs z-50`}>
           <Link href='/' className='p-2 nav-border nav-hover'>
             <Sprite id='home' /> Home
           </Link>
@@ -104,9 +103,15 @@ export default function Nav() {
           <Link href='/contact' className='p-2 nav-border nav-hover'>
             <Sprite id='contact' /> Contact
           </Link>
-          <Link href='/login' className='p-2 nav-border nav-hover'>
-            <Sprite id='login' /> Login
-          </Link>
+          {success ? (
+            <Link href='/logout' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
+              <Sprite id='logout' /> Logout
+            </Link>
+          ) : (
+            <Link href='/login' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
+              <Sprite id='login' /> Login
+            </Link>
+          )}
         </div>
       )}
     </nav>
