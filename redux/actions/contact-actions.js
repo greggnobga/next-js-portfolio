@@ -14,9 +14,9 @@ export const messageContact = (params) => async (dispatch, getState) => {
       body: JSON.stringify(params),
     });
 
-    // const data = await reponse.json();
+    const data = await reponse.json();
 
-    // console.log(data);
+    console.log(data);
 
     /** Dispatch success. */
     dispatch({ type: CONTACT_SUCCESS, payload: { success: true, message: 'Message sent!' } });
@@ -24,7 +24,7 @@ export const messageContact = (params) => async (dispatch, getState) => {
     /** Dispatch failure. */
     dispatch({
       type: CONTACT_FAILURE,
-      payload: 'Unable to send your message.',
+      payload: error.response && error.response.data.message ? error.response.data.message : error.message,
     });
   }
 };
