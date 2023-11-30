@@ -25,11 +25,12 @@ const userSchema = mongoose.Schema(
   },
   {
     timestamps: true,
+    versionKey: false,
   },
 );
 
 /** Define model using user schema. */
-const User = mongoose.model('User', userSchema);
+const User = mongoose.models.User || mongoose.model('User', userSchema);
 
 /** Export. */
 export default User;

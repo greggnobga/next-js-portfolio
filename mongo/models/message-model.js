@@ -15,14 +15,20 @@ const messageSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    isRead: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
   },
   {
     timestamps: true,
+    versionKey: false,
   },
 );
 
 /** Define model using user schema. */
-const Message = mongoose.model('Message', messageSchema);
+const Message = mongoose.models.Message || mongoose.model('Message', messageSchema);
 
 /** Export. */
 export default Message;

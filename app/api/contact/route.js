@@ -2,46 +2,39 @@
 import { NextResponse } from 'next/server';
 
 /** Lib. */
-import connectDB from '../../../lib/db.js';
-import { Sanitizer } from '../../../lib/sanitizer.js';
+import connectDB from '../../../lib/db';
+import { Sanitizer } from '../../../lib/sanitizer';
+import Message from '../../../mongo/models/message-model';
 
-export async function GET() {
-  // const client = await MongoClient.connect(process.env.MONGO_URI, {});
-  // const db = client.db();
-  // console.log(db);
-  // const inquiries = db.collection('inquiries');
-  // const findMe = await inquiries.find().toArray();
-  // console.log(findMe);
-  // client.close();
-  // return NextResponse.json('Connected to database');
-}
+/** Connect MongonDB. */
+connectDB();
 
 export async function POST(request) {
-  /** Connect to mongodb. */
-  connectDB();
-
   /** Await the post data. */
   const data = await request.json();
-  /** Saniteze post data. */
+
+  /** Sanitize post data. */
   const filtered = await Sanitizer(data);
 
-  for (let key in filtered) {
-    console.log(key + ': ' + filtered[key]);
+  /** Check for existing record. */
+  const exist = await Message.findOne({ email: filtered.email }).select('name  -_id').exec();
+
+  /** Prevent user from sending multiple message. */
+  if (exist) {
+    /** Return warning message. */
+    return NextResponse.json({ message: 'You have already sent a message; please await the developers response.', exist, status: 302 });
   }
 
-  return NextResponse.json(filtered);
+  /** Add to database record. */
+  try {
+    /** Create an instance and then save. */
+    const result = new Message(filtered);
+    await result.save();
 
-  // const client = await MongoClient.connect(process.env.MONGO_URI, {});
-
-  // const db = client.db();
-  // console.log(db);
-  // const inquiries = db.collection('inquiries');
-
-  // const findMe = await inquiries.find().toArray();
-
-  // console.log(findMe);
-
-  // client.close();
-
-  // return NextResponse.json('Connected to database');
+    /** Return success message. */
+    return NextResponse.json({ message: 'Message sent successfully', status: 200 });
+  } catch (error) {
+    /** Return error message. */
+    return NextResponse.json({ message: 'Unable to send a message!', status: 500 });
+  }
 }

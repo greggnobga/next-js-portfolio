@@ -4,13 +4,16 @@
 import { useEffect } from 'react';
 
 /* Vendor. */
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 /** Action. */
-import { messageContact } from '../../redux/actions/contact-actions';
+import { messageContact, messageReset } from '../../redux/actions/contact-actions';
 
 /** Hook. */
 import useValidator from '../../hooks/use-validator';
+
+/** Component. */
+import Notifications from '../../components/notifications';
 
 export default function Contact() {
   /** Map html element to validate hook. */
@@ -76,12 +79,30 @@ export default function Contact() {
     messageInputReset();
   }
 
+  /** Use selector. */
+  const contactMessage = useSelector((state) => state.contactMessage);
+  const { status: responseStatus, message: responseMessage } = contactMessage;
+
+  /** Use effect. */
+  useEffect(() => {
+    /** Check if response has value. */
+    if (responseMessage) {
+      const timer = setTimeout(() => {
+        /** Reset message. */
+        dispatch(messageReset());
+      }, 5000);
+      /** Clear running timer. */
+      return () => clearTimeout(timer);
+    }
+  }, [responseMessage]);
+
   /** Return something. */
   return (
     <section className='p-2 flex min-h-screen flex-col gap-2 z-10'>
       <h1 className='p-2 font-thin uppercase text-sm'>
         <span className='text-green-400'>/</span> Contact
       </h1>
+      {responseMessage && <Notifications status={responseStatus} message={responseMessage} />}
       <div className='p-2 grid grid-cols-1'>
         <form onSubmit={submitHandler}>
           <div className='relative z-0 w-full mb-6 group'>

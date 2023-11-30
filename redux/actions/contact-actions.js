@@ -1,10 +1,11 @@
 import { CONTACT_REQUEST, CONTACT_SUCCESS, CONTACT_FAILURE } from '../constants/contact-constants';
 
 export const messageContact = (params) => async (dispatch, getState) => {
-  console.log(params);
+  /** Initiate try catch block. */
   try {
     /** Dispatch request. */
     dispatch({ type: CONTACT_REQUEST });
+
     /** Make api request. */
     const response = await fetch('/api/contact', {
       method: 'POST',
@@ -13,13 +14,11 @@ export const messageContact = (params) => async (dispatch, getState) => {
       },
       body: JSON.stringify(params),
     });
-
-    const data = await reponse.json();
-
-    console.log(data);
+    /** Wait for the response. */
+    const data = await response.json();
 
     /** Dispatch success. */
-    dispatch({ type: CONTACT_SUCCESS, payload: { success: true, message: 'Message sent!' } });
+    dispatch({ type: CONTACT_SUCCESS, payload: { status: data.status, message: data.message } });
   } catch (error) {
     /** Dispatch failure. */
     dispatch({
@@ -27,4 +26,9 @@ export const messageContact = (params) => async (dispatch, getState) => {
       payload: error.response && error.response.data.message ? error.response.data.message : error.message,
     });
   }
+};
+
+export const messageReset = (params) => async (dispatch, getState) => {
+  /** Dispatch request. */
+  dispatch({ type: CONTACT_REQUEST });
 };
