@@ -1,18 +1,57 @@
-import { USER_AUTH_REQUEST, USER_AUTH_SUCCESS, USER_AUTH_FAILURE } from '../constants/user-constants';
+/** Constant. */
+import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE, USER_LOGIN_MESSAGE, USER_LOGIN_LOGOUT } from '../constants/user-constants';
 
-export const authUser = () => async (dispatch, getState) => {
+/** Vendor. */
+import { redirect } from 'next/navigation';
+
+export const userLogin = (params) => async (dispatch, getState) => {
+  /** Initiate try catch block. */
   try {
-    dispatch({ type: USER_AUTH_REQUEST, payload: { loading: true, success: 'Test request payload.' } });
+    /** Dispatch request. */
+    dispatch({ type: USER_LOGIN_REQUEST });
 
-    /** Dispatch action to set inital state. */
-    dispatch({ type: USER_AUTH_SUCCESS, payload: { loading: false, success: 'Test success payload.' } });
+    /** Make api request. */
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(params),
+    });
+    /** Wait for the response. */
+    const data = await response.json();
 
-    throw Error('test error.');
+    /** Dispatch success. */
+    dispatch({ type: USER_LOGIN_SUCCESS, payload: { token: data.token, status: data.status, message: data.message } });
+
+    /** Save access token to local storage. */
+    localStorage.setItem('userAuth', JSON.stringify(data));
+
+    /** Redirect to dashboard. */
+    if (data) {
+      redirect('/dashboard');
+    }
   } catch (error) {
-    /** Dispatch action if error occurred. */
+    /** Dispatch failure. */
     dispatch({
-      type: USER_AUTH_FAILURE,
-      payload: { loading: false, error: 'Test error payload.' },
+      type: USER_LOGIN_FAILURE,
+      payload: error.response && error.response.data.message ? error.response.data.message : error.message,
     });
   }
+};
+
+export const userReset = (params) => async (dispatch, getState) => {
+  /** Get user auth state. */
+  const { userAuth } = getState();
+
+  /** Dispatch message reset. */
+  dispatch({ type: USER_LOGIN_MESSAGE, payload: { ...userAuth, message: '' } });
+};
+
+export const userLogout = (params) => async (dispatch, getState) => {
+  /** Remove access token to local storage. */
+  localStorage.removeItem('userAuth');
+
+  /** Dispatch message reset. */
+  dispatch({ type: USER_LOGIN_LOGOUT });
 };

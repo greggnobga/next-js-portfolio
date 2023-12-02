@@ -1,14 +1,18 @@
-import { USER_AUTH_REQUEST, USER_AUTH_SUCCESS, USER_AUTH_FAILURE } from '../constants/user-constants';
+import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE, USER_LOGIN_MESSAGE, USER_LOGIN_LOGOUT } from '../constants/user-constants';
 
-/** Auth reducer. */
-export function authUser(state = {}, action) {
+/** Login user reducer. */
+export function userAuth(state = {}, action) {
   switch (action.type) {
-    case USER_AUTH_REQUEST:
+    case USER_LOGIN_REQUEST:
       return { loading: true };
-    case USER_AUTH_SUCCESS:
+    case USER_LOGIN_SUCCESS:
       return { loading: false, ...action.payload };
-    case USER_AUTH_FAILURE:
+    case USER_LOGIN_FAILURE:
       return { loading: false, error: action.payload };
+    case USER_LOGIN_MESSAGE:
+      return { ...action.payload };
+    case USER_LOGIN_LOGOUT:
+      return {};
     default:
       return state;
   }

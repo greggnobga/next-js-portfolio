@@ -3,8 +3,17 @@
 /** React. */
 import { useEffect } from 'react';
 
+/* Vendor. */
+import { useDispatch, useSelector } from 'react-redux';
+
+/** Action. */
+import { userLogin, userReset } from '../../redux/actions/user-actions';
+
 /** Hook. */
 import useValidator from '../../hooks/use-validator';
+
+/** Component. */
+import Notifications from '../../components/notifications';
 
 export default function Login() {
   /** Map html element to validate hook. */
@@ -36,15 +45,50 @@ export default function Login() {
     formIsValid = true;
   }
 
+  /** Use dispatch. */
+  const dispatch = useDispatch();
+
   /** Submit hanndler. */
   function submitHandler(e) {
-    e.preventDefault();
-    console.log('Clicked submit.');
+    /** Prevent browser default behaviour */
+    event.preventDefault();
+
+    /** Change blur state. */
+    emailBlurHandler(true);
+    passwordBlurHandler(true);
+
+    /** Check if there is invalid input. */
+    if (!emailIsValid && !passwordIsValid) {
+      return;
+    }
+
+    /** Dispatch action. */
+    dispatch(userLogin({ email, password }));
+
+    /** Reset input. */
+    emailInputReset();
+    passwordInputReset();
   }
 
+  /** Use selector. */
+  const userAuth = useSelector((state) => state.userAuth);
+  const { status: responseStatus, message: responseMessage, token: responseToken } = userAuth;
+
+  /** Use effect. */
   useEffect(() => {
-    fetch('/api/projects');
-  }, []);
+    /** Check if response has value. */
+    if (responseMessage) {
+      const timer = setTimeout(() => {
+        /** Reset message. */
+        dispatch(userReset());
+      }, 5000);
+      /** Clear running timer. */
+      return () => clearTimeout(timer);
+    }
+    if (responseToken) {
+      console.log('Token set, redirect to dashboard.');
+    }
+  }, [responseMessage, responseToken]);
 
   /** Return something. */
   return (
@@ -52,6 +96,7 @@ export default function Login() {
       <h1 className='p-2 font-thin uppercase text-sm'>
         <span className='text-green-400'>/</span> Login
       </h1>
+      {responseMessage && <Notifications status={responseStatus} message={responseMessage} />}
       <div className='p-2 grid grid-cols-1'>
         <form onSubmit={submitHandler}>
           <div className='relative z-0 w-full mb-6 group'>

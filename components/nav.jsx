@@ -4,14 +4,14 @@
 import { useState, useEffect } from 'react';
 
 /** Vendor. */
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 
 /** Hooks. */
 import useScreen from '../hooks/use-screen';
 
 /** Action. */
-import { authUser } from '../redux/actions/user-actions.js';
+import { userLogout } from '../redux/actions/user-actions.js';
 
 /** Components. */
 import Sprite from './sprite';
@@ -31,7 +31,7 @@ export default function Nav() {
 
   /** Select state from redux. */
   const userAuth = useSelector((state) => state.userAuth);
-  const { success } = userAuth;
+  const { token } = userAuth;
 
   /** Use effect to monitor screen hook changes. */
   useEffect(() => {
@@ -43,6 +43,14 @@ export default function Nav() {
       setMobile(false);
     }
   }, [screen]);
+
+  /** Use dispatch. */
+  const dispatch = useDispatch();
+
+  /** Logout handler. */
+  function logoutHandler() {
+    dispatch(userLogout());
+  }
 
   /** Return something. */
   return (
@@ -78,10 +86,15 @@ export default function Nav() {
             <Link href='/contact' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
               <Sprite id='contact' /> Contact
             </Link>
-            {success ? (
-              <Link href='/logout' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
-                <Sprite id='logout' /> Logout
-              </Link>
+            {token ? (
+              <>
+                <Link href='/dashboard' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
+                  <Sprite id='logout' /> Dashboard
+                </Link>
+                <button className='p-2 nav-border nav-hover' onClick={logoutHandler}>
+                  <Sprite id='logout' /> Logout
+                </button>
+              </>
             ) : (
               <Link href='/login' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
                 <Sprite id='login' /> Login
@@ -94,7 +107,7 @@ export default function Nav() {
           <Link href='/' className='p-2 nav-border nav-hover'>
             <Sprite id='home' /> Home
           </Link>
-          <Link href='/project' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
+          <Link href='/project' className='p-2 nav-border nav-hover'>
             <Sprite id='project' /> Project
           </Link>
           <Link href='/about' className='p-2 nav-border nav-hover'>
@@ -103,12 +116,17 @@ export default function Nav() {
           <Link href='/contact' className='p-2 nav-border nav-hover'>
             <Sprite id='contact' /> Contact
           </Link>
-          {success ? (
-            <Link href='/logout' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
-              <Sprite id='logout' /> Logout
-            </Link>
+          {token ? (
+            <>
+              <Link href='/dashboard' className='p-2 nav-border nav-hover'>
+                <Sprite id='logout' /> Dashboard
+              </Link>
+              <button className='p-2 nav-border nav-hover' onClick={logoutHandler}>
+                <Sprite id='logout' /> Logout
+              </button>
+            </>
           ) : (
-            <Link href='/login' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
+            <Link href='/login' className='p-2 nav-border nav-hover'>
               <Sprite id='login' /> Login
             </Link>
           )}

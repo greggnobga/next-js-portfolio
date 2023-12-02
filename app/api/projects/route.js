@@ -1,18 +1,17 @@
+/** Vendor. */
 import { NextResponse } from 'next/server';
-import { MongoClient } from 'mongodb';
 
-export async function GET() {
-  const client = await MongoClient.connect(process.env.MONGO_URI, {});
+/** Lib. */
+import connectDB from '../../../lib/db';
 
-  const db = client.db();
-  //   console.log(db);
-  //   const inquiries = db.collection('inquiries');
+/** Connect MongonDB. */
+connectDB();
 
-  //   const findMe = await inquiries.find().toArray();
+export async function POST(request) {
+  /** Await the post data. */
+  const data = await request.json();
 
-  //   console.log(findMe);
+  console.log(data);
 
-  client.close();
-
-  return NextResponse.json('Connected to database');
+  return NextResponse.json({ message: 'Project api route!', status: 200 });
 }

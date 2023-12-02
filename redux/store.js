@@ -6,21 +6,27 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from '@redux-devtools/extension';
 
 /** Reducer. */
-import { authUser } from './reducers/user-reducers';
+import { userAuth } from './reducers/user-reducers';
 import { contactMessage } from './reducers/contact-reducers';
 
 /** Combine reducer. */
 const reducer = combineReducers({
-  userAuth: authUser,
+  userAuth: userAuth,
   contactMessage: contactMessage,
 });
 
-/** Initial state. */
-//const userAuthFromStorage = localStorage.getItem('auth') ? JSON.parse(localStorage.getItem('auth')) : {};
+/** Define variables. */
+let userAuthFromStorage;
 
+/** Only run when window is set. */
+if (typeof window !== 'undefined') {
+  /** Get token from local storage. */
+  userAuthFromStorage = localStorage.getItem('userAuth') ? JSON.parse(localStorage.getItem('userAuth')) : '';
+}
+
+/** Define initial state. */
 const initialState = {
-  userAuth: { loading: false, success: false, error: null },
-  contactMessage: { loading: false, message: null, error: null },
+  userAuth: userAuthFromStorage,
 };
 
 /** Middleware. */

@@ -1,9 +1,11 @@
 /** Vendor. */
 import { NextResponse } from 'next/server';
 
-/** Lib. */
+/** Library. */
 import connectDB from '../../../lib/db';
 import { Sanitizer } from '../../../lib/sanitizer';
+
+/** Model. */
 import Message from '../../../mongo/models/message-model';
 
 /** Connect MongonDB. */
@@ -22,7 +24,7 @@ export async function POST(request) {
   /** Prevent user from sending multiple message. */
   if (exist) {
     /** Return warning message. */
-    return NextResponse.json({ message: 'You have already sent a message; please await the developers response.', exist, status: 302 });
+    return NextResponse.json({ message: 'You have already sent a message; please await the developers response.', status: 302 });
   }
 
   /** Add to database record. */
