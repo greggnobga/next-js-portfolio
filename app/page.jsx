@@ -1,4 +1,4 @@
-/** Next. */
+/** Vendor. */
 import Link from 'next/link';
 
 /** Components. */
@@ -17,10 +17,10 @@ export default function Home() {
           </h3>
           <h1 className='p-2 text-3xl'>I've been developing websites since 0000</h1>
           <p className='p-2 text-xs text-justify'>
-            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi
-            tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem
-            ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea
-            voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut
+            labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi
+            ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel
+            illum qui dolorem eum fugiat quo voluptas nulla pariatur.
           </p>
           <Link href='/about' className='block text-right mb-2'>
             <span className='border-b pb-2 text-xs nav-hover'>
@@ -39,9 +39,9 @@ export default function Home() {
           </div>
           <div className='p-2'>
             <p className='p-2 text-xs text-justify'>
-              Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
-              consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum
-              qui dolorem eum fugiat quo voluptas nulla pariatur.
+              Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem
+              vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
+              pariatur.
             </p>
           </div>
         </div>

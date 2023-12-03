@@ -4,8 +4,8 @@
 import { useState, useEffect } from 'react';
 
 /** Vendor. */
-import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
+import { useDispatch, useSelector } from 'react-redux';
 
 /** Hooks. */
 import useScreen from '../hooks/use-screen';
@@ -31,7 +31,7 @@ export default function Nav() {
 
   /** Select state from redux. */
   const userAuth = useSelector((state) => state.userAuth);
-  const { token } = userAuth;
+  const { logged } = userAuth;
 
   /** Use effect to monitor screen hook changes. */
   useEffect(() => {
@@ -51,7 +51,6 @@ export default function Nav() {
   function logoutHandler() {
     dispatch(userLogout());
   }
-
   /** Return something. */
   return (
     <nav className='flex flex-row p-2 justify-around align-center text-slate-300'>
@@ -86,7 +85,7 @@ export default function Nav() {
             <Link href='/contact' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
               <Sprite id='contact' /> Contact
             </Link>
-            {token ? (
+            {logged ? (
               <>
                 <Link href='/dashboard' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
                   <Sprite id='logout' /> Dashboard
@@ -116,7 +115,7 @@ export default function Nav() {
           <Link href='/contact' className='p-2 nav-border nav-hover'>
             <Sprite id='contact' /> Contact
           </Link>
-          {token ? (
+          {logged ? (
             <>
               <Link href='/dashboard' className='p-2 nav-border nav-hover'>
                 <Sprite id='logout' /> Dashboard

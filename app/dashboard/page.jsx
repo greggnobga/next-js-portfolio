@@ -4,20 +4,23 @@
 import { useEffect } from 'react';
 
 /** Vendor. */
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
 
 export default function Dashboard() {
   /** Use selector */
   const userAuth = useSelector((state) => state.userAuth);
-  const { token } = userAuth;
+  const { logged } = userAuth;
+
+  /** Use router. */
+  const router = useRouter();
 
   /** Use effect. */
   useEffect(() => {
-    if (!token) {
-      redirect('/login');
+    if (!logged) {
+      router.push('/login');
     }
-  }, [token]);
+  }, [logged]);
 
   /** Return something. */
   return (

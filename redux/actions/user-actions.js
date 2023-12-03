@@ -1,8 +1,5 @@
 /** Constant. */
-import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE, USER_LOGIN_MESSAGE, USER_LOGIN_LOGOUT } from '../constants/user-constants';
-
-/** Vendor. */
-import { redirect } from 'next/navigation';
+import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE, USER_LOGIN_MESSAGE } from '../constants/user-constants';
 
 export const userLogin = (params) => async (dispatch, getState) => {
   /** Initiate try catch block. */
@@ -22,15 +19,13 @@ export const userLogin = (params) => async (dispatch, getState) => {
     const data = await response.json();
 
     /** Dispatch success. */
-    dispatch({ type: USER_LOGIN_SUCCESS, payload: { token: data.token, status: data.status, message: data.message } });
+    dispatch({
+      type: USER_LOGIN_SUCCESS,
+      payload: { email: data.email, name: data.name, admin: isAdmin, message: data.message, status: data.status, logged: true },
+    });
 
     /** Save access token to local storage. */
     localStorage.setItem('userAuth', JSON.stringify(data));
-
-    /** Redirect to dashboard. */
-    if (data) {
-      redirect('/dashboard');
-    }
   } catch (error) {
     /** Dispatch failure. */
     dispatch({
@@ -53,5 +48,5 @@ export const userLogout = (params) => async (dispatch, getState) => {
   localStorage.removeItem('userAuth');
 
   /** Dispatch message reset. */
-  dispatch({ type: USER_LOGIN_LOGOUT });
+  dispatch({ type: USER_LOGIN_REQUEST });
 };

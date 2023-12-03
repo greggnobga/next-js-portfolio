@@ -15,7 +15,7 @@ const useScreen = () => {
     useEffect(() => {
       /** On resize function. */
       const onResize = () => {
-        setMobile(getScreen());
+        setMobile(() => getScreen());
       };
       /** Add event resize listener.  */
       window.addEventListener('resize', onResize);

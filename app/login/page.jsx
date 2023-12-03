@@ -3,17 +3,15 @@
 /** React. */
 import { useEffect } from 'react';
 
-/* Vendor. */
+/** Vendor. */
+import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 
 /** Action. */
-import { userLogin, userReset } from '../../redux/actions/user-actions';
+import { userLogin } from '../../redux/actions/user-actions';
 
 /** Hook. */
 import useValidator from '../../hooks/use-validator';
-
-/** Component. */
-import Notifications from '../../components/notifications';
 
 export default function Login() {
   /** Map html element to validate hook. */
@@ -72,31 +70,25 @@ export default function Login() {
 
   /** Use selector. */
   const userAuth = useSelector((state) => state.userAuth);
-  const { status: responseStatus, message: responseMessage, token: responseToken } = userAuth;
+  const { logged } = userAuth;
+
+  /** Use router. */
+  const router = useRouter();
 
   /** Use effect. */
   useEffect(() => {
-    /** Check if response has value. */
-    if (responseMessage) {
-      const timer = setTimeout(() => {
-        /** Reset message. */
-        dispatch(userReset());
-      }, 5000);
-      /** Clear running timer. */
-      return () => clearTimeout(timer);
+    /** Check if token is set. */
+    if (logged) {
+      router.push('/dashboard');
     }
-    if (responseToken) {
-      console.log('Token set, redirect to dashboard.');
-    }
-  }, [responseMessage, responseToken]);
+  }, [logged]);
 
   /** Return something. */
   return (
-    <section className='p-2 flex min-h-screen flex-col gap-2 z-10'>
+    <section className='p-2 flex min-h-screen flex-col gap-2 z-10' suppressHydrationWarning={true}>
       <h1 className='p-2 font-thin uppercase text-sm'>
         <span className='text-green-400'>/</span> Login
       </h1>
-      {responseMessage && <Notifications status={responseStatus} message={responseMessage} />}
       <div className='p-2 grid grid-cols-1'>
         <form onSubmit={submitHandler}>
           <div className='relative z-0 w-full mb-6 group'>
