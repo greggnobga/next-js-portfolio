@@ -1,5 +1,5 @@
 /** Constant. */
-import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE, USER_LOGIN_MESSAGE } from '../constants/user-constants';
+import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE, USER_LOGIN_MESSAGE, USER_LOGIN_LOGOUT } from '../constants/user-constants';
 
 export const userLogin = (params) => async (dispatch, getState) => {
   /** Initiate try catch block. */
@@ -21,7 +21,7 @@ export const userLogin = (params) => async (dispatch, getState) => {
     /** Dispatch success. */
     dispatch({
       type: USER_LOGIN_SUCCESS,
-      payload: { email: data.email, name: data.name, admin: isAdmin, message: data.message, status: data.status, logged: true },
+      payload: { email: data.email, name: data.name, admin: data.admin, message: data.message, status: data.status, logged: true },
     });
 
     /** Save access token to local storage. */
@@ -44,9 +44,20 @@ export const userReset = (params) => async (dispatch, getState) => {
 };
 
 export const userLogout = (params) => async (dispatch, getState) => {
+  /** Make api request. */
+  const response = await fetch('/api/logout', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(params),
+  });
+  /** Wait for the response. */
+  const data = await response.json();
+
   /** Remove access token to local storage. */
   localStorage.removeItem('userAuth');
 
   /** Dispatch message reset. */
-  dispatch({ type: USER_LOGIN_REQUEST });
+  dispatch({ type: USER_LOGIN_LOGOUT, payload: { message: data.message } });
 };

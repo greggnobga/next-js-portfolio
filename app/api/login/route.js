@@ -1,9 +1,10 @@
 /** Vendor. */
+import cookie from 'cookie';
 import { NextResponse } from 'next/server';
 
 /** Library. */
 import connectDB from '../../../lib/db';
-import generateToken from '../../../lib/token';
+import { generateToken } from '../../../lib/token';
 
 /** Model. */
 import User from '../../../mongo/models/user-model';
@@ -25,14 +26,20 @@ export async function POST(request) {
       {
         email: user.email,
         name: user.name,
-        isAdmin: user.isAdmin,
+        admin: user.admin,
         message: user.name + ', we are glad you are back and hope you will have a good time with us.',
         status: 200,
         logged: true,
       },
       {
         headers: {
-          'Set-Cookie': `token=${generateToken(user._id)};path=/`,
+          'Set-Cookie': cookie.serialize('token', await generateToken(user._id), {
+            httpOnly: true,
+            secure: process.env.NODE_ENV !== 'development',
+            MaxAge: 60 * 60,
+            sameSite: 'strict',
+            path: '/',
+          }),
         },
       },
     );

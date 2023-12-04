@@ -11,19 +11,17 @@ const users = [
     email: 'reijo@buntod.com',
     name: 'Reijo N',
     password: bcrypt.hashSync(process.env.SEEDER_PASSWORD),
-    isAdmin: true,
+    admin: true,
   },
   {
     email: 'orion@buntod.com',
     name: 'Orion N',
     password: bcrypt.hashSync(process.env.SEEDER_PASSWORD),
-    isAdmin: false,
   },
   {
     email: 'grigor@buntod.com',
     name: 'Orion N',
     password: bcrypt.hashSync(process.env.SEEDER_PASSWORD),
-    isAdmin: false,
   },
 ];
 

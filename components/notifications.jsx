@@ -15,8 +15,10 @@ export default function Notifications({ status, message }) {
     <div
       className={`fixed flex items-center w-full max-w-xs p-4 space-x-4 ${variant} bg-white divide-x rtl:divide-x-reverse divide-gray-200 rounded-lg shadow top-5 right-5 dark:divide-gray-700 space-x dark:bg-gray-800 z-10`}
       role='alert'>
-      <span className='text-sm font-normal'>{code <= 300 ? <Sprite id='mail' /> : <Sprite id='alert' />}</span>
-      <span>{message}</span>
+      <span className='text-sm font-normal'>
+        {code <= 300 ? <Sprite id='mail' /> : <Sprite id='alert' />}
+        {message}
+      </span>
     </div>
   );
 }

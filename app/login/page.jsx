@@ -8,10 +8,13 @@ import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 
 /** Action. */
-import { userLogin } from '../../redux/actions/user-actions';
+import { userLogin, userReset } from '../../redux/actions/user-actions';
 
 /** Hook. */
 import useValidator from '../../hooks/use-validator';
+
+/** Component. */
+import Notifications from '../../components/notifications';
 
 export default function Login() {
   /** Map html element to validate hook. */
@@ -70,7 +73,7 @@ export default function Login() {
 
   /** Use selector. */
   const userAuth = useSelector((state) => state.userAuth);
-  const { logged } = userAuth;
+  const { logged, message, status } = userAuth;
 
   /** Use router. */
   const router = useRouter();
@@ -81,7 +84,16 @@ export default function Login() {
     if (logged) {
       router.push('/dashboard');
     }
-  }, [logged]);
+    /** Check if response has value. */
+    if (message) {
+      const timer = setTimeout(() => {
+        /** Reset message. */
+        dispatch(userReset());
+      }, 5000);
+      /** Clear running timer. */
+      return () => clearTimeout(timer);
+    }
+  }, [logged, message]);
 
   /** Return something. */
   return (
@@ -89,6 +101,7 @@ export default function Login() {
       <h1 className='p-2 font-thin uppercase text-sm'>
         <span className='text-green-400'>/</span> Login
       </h1>
+      {message ? <Notifications message={message} status={status} /> : ''}
       <div className='p-2 grid grid-cols-1'>
         <form onSubmit={submitHandler}>
           <div className='relative z-0 w-full mb-6 group'>
