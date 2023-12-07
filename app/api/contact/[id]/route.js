@@ -1,30 +1,32 @@
 /** Vendor. */
 import { NextResponse } from 'next/server';
-import { usePathname } from 'next/navigation';
 
-/** Lib. */
-import connectDB from '../../../../lib/db';
+/** Library. */
+import Watcher from '../../../../lib/watcher';
 import Message from '../../../../mongo/models/message-model.js';
-
-/** Connect MongonDB. */
-connectDB();
 
 export async function GET(request, { params }) {
   /** Await the post data. */
   const { id } = await params;
 
-  /** Check if id is not null. */
-  if (id) {
+  /** Call the watcher to verify the cookie integrity. */
+  const { verified } = await Watcher(request);
+
+  /** Watcher verdict. */
+  if (verified && id) {
     /** Initiate try catch block. */
     try {
       /** Select a record from database. */
-      const record = await Message.findOne({ _id: id }).select('-_id').exec();
+      const record = await Message.findOne({ _id: id }).select('_id email name email message read').exec();
 
       /** Return success message. */
-      return NextResponse.json({ message: 'Record fetching successfully', record });
+      return NextResponse.json(record);
     } catch (error) {
       /** Return error message. */
       return NextResponse.json({ message: 'Error fetching record' });
     }
+  } else {
+    /** Return error message. */
+    return NextResponse.json({ message: 'Before the request stands a watcher on guard.', status: 403 });
   }
 }

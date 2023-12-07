@@ -1,35 +1,28 @@
 /** Vendor. */
-import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 /** Library. */
-import { verifyToken } from './lib/token';
+import Watcher from './lib/watcher';
 
 /** Export default function. */
 export default async function middleware(request) {
-  /** Get cookie in the jar. */
-  const token = request.cookies.get('token')?.value;
-
-  /** Verify token. */
-  const verifiedToken =
-    token &&
-    (await verifyToken(token).catch((error) => {
-      console.log(error);
-    }));
+  /** Call the watcher to verify the cookie integrity. */
+  const { verified } = await Watcher(request);
 
   /** If in login page with no token just return. */
-  if (request.nextUrl.pathname.startsWith('/login') && !verifiedToken) {
+  if (request.nextUrl.pathname.startsWith('/login') && !verified) {
     return;
   }
 
-  /** If in login page with no token just return. */
-  if (request.nextUrl.pathname.startsWith('/login') && verifiedToken) {
-    return NextResponse.redirect(`${process.env.HOST}/dashboard`);
+  /** If no verified token. */
+  if (!verified) {
+    /** Return to login page. */
+    return NextResponse.redirect(`${process.env.HOST}/login`);
   }
 
-  /** If no verified token. */
-  if (!verifiedToken) {
-    return NextResponse.redirect(`${process.env.HOST}/login`);
+  /** If in login page with no token just return. */
+  if (request.nextUrl.pathname.startsWith('/login') && verified) {
+    return NextResponse.redirect(`${process.env.HOST}/dashboard`);
   }
 }
 

@@ -3,14 +3,10 @@ import cookie from 'cookie';
 import { NextResponse } from 'next/server';
 
 /** Library. */
-import connectDB from '../../../lib/db';
 import { generateToken } from '../../../lib/token';
 
 /** Model. */
 import User from '../../../mongo/models/user-model';
-
-/** Connect MongonDB. */
-connectDB();
 
 export async function POST(request) {
   /** Await the post data. */

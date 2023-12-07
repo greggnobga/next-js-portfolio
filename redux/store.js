@@ -8,11 +8,13 @@ import { composeWithDevTools } from '@redux-devtools/extension';
 /** Reducer. */
 import { userAuth } from './reducers/user-reducers';
 import { contactMessage } from './reducers/contact-reducers';
+import { projectList } from './reducers/project-reducers';
 
 /** Combine reducer. */
 const reducer = combineReducers({
   userAuth: userAuth,
   contactMessage: contactMessage,
+  projectList: projectList,
 });
 
 /** Define variables. */

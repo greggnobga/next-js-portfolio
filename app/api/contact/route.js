@@ -2,15 +2,43 @@
 import { NextResponse } from 'next/server';
 
 /** Library. */
-import connectDB from '../../../lib/db';
+import Watcher from '../../../lib/watcher';
 import { Sanitizer } from '../../../lib/sanitizer';
 
 /** Model. */
 import Message from '../../../mongo/models/message-model';
 
-/** Connect MongonDB. */
-connectDB();
+/** GET. */
+export async function GET(request) {
+  /** Call the watcher to verify the cookie integrity. */
+  const { verified } = await Watcher(request);
 
+  /** Watcher verdict. */
+  if (verified) {
+    /** Fetch all messages record. */
+    try {
+      /** Check for existing record. */
+      const message = await Message.find().select('_id email name email message read').exec();
+
+      /** Prevent user from sending multiple message. */
+      if (message) {
+        /** Return message list. */
+        return NextResponse.json(message);
+      } else {
+        /** Return warning message. */
+        return NextResponse.json({ message: 'No message so far.', status: 200 });
+      }
+    } catch (error) {
+      /** Return error message. */
+      return NextResponse.json({ message: 'Unable to fetched message list!', status: 500 });
+    }
+  } else {
+    /** Return error message. */
+    return NextResponse.json({ message: 'Before the request stands a watcher on guard.', status: 403 });
+  }
+}
+
+/** Post contact message. */
 export async function POST(request) {
   /** Await the post data. */
   const data = await request.json();
