@@ -1,12 +1,6 @@
 /** Vendor. */
 import { NextResponse } from 'next/server';
 
-/** Lib. */
-import Database from '../../lib/db';
-
-/** Connect MongonDB. */
-Database();
-
 /** GET. */
 export async function GET(request) {
   /** Return error message. */

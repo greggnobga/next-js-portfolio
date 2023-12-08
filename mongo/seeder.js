@@ -1,26 +1,31 @@
 /** Vendor. */
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
 /** Models. */
 import User from './models/user-model.js';
 import Message from './models/message-model.js';
+import Project from './models/project-model.js';
 
 /** Data. */
 import users from './data/users.js';
 import messages from './data/messages.js';
+import projects from './data/projects.js';
 
-/** Library. */
-import connectDB from '../lib/db.js';
-
-connectDB();
+/** Run dotenv config. */
+dotenv.config();
 
 const importData = async () => {
+  await mongoose.connect(process.env.MONGO_SEEDER_URI, {});
+
   try {
     await User.deleteMany();
     await Message.deleteMany();
+    await Project.deleteMany();
 
     await User.insertMany(users);
     await Message.insertMany(messages);
+    await Project.insertMany(projects);
 
     console.log('Data imported.');
     process.exit();
@@ -31,9 +36,12 @@ const importData = async () => {
 };
 
 const destroyData = async () => {
+  await mongoose.connect(process.env.MONGO_SEEDER_URI, {});
+
   try {
     await User.deleteMany();
     await Message.deleteMany();
+    await Project.deleteMany();
 
     console.log('Data destroyed.');
     process.exit();

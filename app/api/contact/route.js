@@ -2,11 +2,15 @@
 import { NextResponse } from 'next/server';
 
 /** Library. */
+import Database from '../../../lib/db';
 import Watcher from '../../../lib/watcher';
 import { Sanitizer } from '../../../lib/sanitizer';
 
 /** Model. */
 import Message from '../../../mongo/models/message-model';
+
+/** Connect MongonDB. */
+Database();
 
 /** GET. */
 export async function GET(request) {
@@ -18,12 +22,12 @@ export async function GET(request) {
     /** Fetch all messages record. */
     try {
       /** Check for existing record. */
-      const message = await Message.find().select('_id email name email message read').exec();
+      const messages = await Message.find({}).select('_id email name email message read').exec();
 
       /** Prevent user from sending multiple message. */
-      if (message) {
+      if (messages) {
         /** Return message list. */
-        return NextResponse.json(message);
+        return NextResponse.json(messages);
       } else {
         /** Return warning message. */
         return NextResponse.json({ message: 'No message so far.', status: 200 });

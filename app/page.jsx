@@ -6,7 +6,25 @@ import Sprite from '../components/sprite';
 import Hero from '../components/hero';
 import Card from '../components/card';
 
-export default function Home() {
+async function getFeatured() {
+  /** Get data from api. */
+  const featured = await fetch(`${process.env.HOST}/api/projects/featured`, { cache: 'no-store' }).then((data) => data.json());
+
+  /** Return something. */
+  return featured ? (
+    featured.map((project, id) => {
+      return <Card key={id} name={project.name} image={project.image} description={project.description} tags={project.tags} demo={project.demo} />;
+    })
+  ) : (
+    <p>No featured project so far.</p>
+  );
+}
+
+export default async function Home() {
+  /** Get featured projects. */
+  const projects = await getFeatured();
+
+  /** Return something. */
   return (
     <section className='p-2 flex flex-wrap flex-col'>
       <Hero />
@@ -102,31 +120,7 @@ export default function Home() {
             <span className='text-green-400'>/</span> Featured Projects
           </h3>
         </div>
-        <div className='grid grid-cols-1 gap-2 sm:grid-cols-3 place-items-start w-full'>
-          <Card
-            title='Portfolio Trade App'
-            image='/images/trade.png'
-            link='/project/1'
-            description='A Laravel React Plus Tailwind application will track stock price changes and allow the user to manage portfolio holdings.'
-            badge={['laravel', 'mysql', 'react', 'tailwind']}
-          />
-
-          <Card
-            title='Portfolio Trade App'
-            image='/images/trade.png'
-            link='/project/2'
-            description='A Laravel React Plus Tailwind application will track stock price changes and allow the user to manage portfolio holdings.'
-            badge={['laravel', 'mysql', 'react', 'tailwind']}
-          />
-
-          <Card
-            title='Portfolio Trade App'
-            image='/images/trade.png'
-            link='/project/3'
-            description='A Laravel React Plus Tailwind application will track stock price changes and allow the user to manage portfolio holdings.'
-            badge={['laravel', 'mysql', 'react', 'tailwind']}
-          />
-        </div>
+        <div className='grid grid-cols-1 gap-2 sm:grid-cols-3 place-items-center w-full'>{projects}</div>
       </div>
     </section>
   );

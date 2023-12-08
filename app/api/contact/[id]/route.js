@@ -2,8 +2,12 @@
 import { NextResponse } from 'next/server';
 
 /** Library. */
+import Database from '../../../../lib/db';
 import Watcher from '../../../../lib/watcher';
 import Message from '../../../../mongo/models/message-model.js';
+
+/** Connect MongonDB. */
+Database();
 
 export async function GET(request, { params }) {
   /** Await the post data. */
