@@ -15,7 +15,7 @@ export async function GET(request) {
   /** Fetch all messages record. */
   try {
     /** Check for existing record. */
-    const featured = await Project.find({}).select('_id name description image tags demo').limit(3).exec();
+    const featured = await Project.find({}).select('name description image tags permalink demo').limit(3).exec();
 
     /** Prevent user from sending multiple message. */
     if (featured) {

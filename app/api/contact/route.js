@@ -22,7 +22,7 @@ export async function GET(request) {
     /** Fetch all messages record. */
     try {
       /** Check for existing record. */
-      const messages = await Message.find({}).select('_id email name email message read').exec();
+      const messages = await Message.find({}).select('email name message read').exec();
 
       /** Prevent user from sending multiple message. */
       if (messages) {

@@ -8,7 +8,7 @@ async function getProjects() {
   /** Return something. */
   return data ? (
     data.map((item, id) => {
-      return <Card key={id} name={item.name} image={item.image} description={item.description} tags={item.tags} demo={item.demo} />;
+      return <Card key={id} name={item.name} image={item.image} description={item.description} tags={item.tags} permalink={item.permalink} demo={item.demo} />;
     })
   ) : (
     <p>No featured project so far.</p>

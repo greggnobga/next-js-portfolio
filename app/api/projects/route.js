@@ -15,7 +15,7 @@ export async function GET(request) {
   /** Fetch all messages record. */
   try {
     /** Check for existing record. */
-    const projects = await Project.find({}).select('_id name permalink description image tags demo').limit(10).exec();
+    const projects = await Project.find({}).select('name description image tags permalink demo').limit(10).exec();
 
     /** Prevent user from sending multiple message. */
     if (projects) {

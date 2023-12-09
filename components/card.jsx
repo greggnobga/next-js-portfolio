@@ -1,16 +1,17 @@
-/** Next. */
+/** Vendor. */
 import Link from 'next/link';
+import Image from 'next/image';
 
-export default function Card({ name, image, description, tags, demo }) {
+export default function Card({ name, image, description, tags, permalink }) {
   /** Split tags into array */
   const badge = tags ? tags.split(' ') : [];
 
   /** Return something. */
   return (
     <Link
-      href={demo}
+      href={`project/${permalink}`}
       className='flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700'>
-      <img className='object-cover object-top w-full h-48 sm:64 rounded-t-lg' src={image} alt='' />
+      <Image className='object-cover object-top w-full h-48 sm:64 rounded-t-lg' src={image} width={750} height={750} alt={name} />
       <div className='flex flex-col justify-between p-4 leading-normal'>
         <h5 className='mb-2 text-sm font-bold tracking-tight text-gray-900 dark:text-white'>{name}</h5>
         <p className='mb-3 text-xs font-normal text-gray-700 dark:text-gray-400'>{description?.substring(0, 200)}</p>

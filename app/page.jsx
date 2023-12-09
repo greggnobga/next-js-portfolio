@@ -12,8 +12,8 @@ async function getFeatured() {
 
   /** Return something. */
   return featured ? (
-    featured.map((project, id) => {
-      return <Card key={id} name={project.name} image={project.image} description={project.description} tags={project.tags} demo={project.demo} />;
+    featured.map((item, id) => {
+      return <Card key={id} name={item.name} image={item.image} description={item.description} tags={item.tags} permalink={item.permalink} demo={item.demo} />;
     })
   ) : (
     <p>No featured project so far.</p>
