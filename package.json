@@ -1,32 +1,32 @@
 {
-  "name": "next-js",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "data:import": "node mongo/seeder",
-    "data:destroy": "node mongo/seeder -d"
-  },
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cookie": "^0.6.0",
-    "dotenv": "^16.3.1",
-    "jose": "^5.1.3",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.0.2",
-    "next": "^14.0.2",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-redux": "^8.1.3",
-    "redux": "^4.2.1",
-    "redux-thunk": "^2.4.2",
-    "tailwindcss": "^3.3.0"
-  },
-  "devDependencies": {
-    "@redux-devtools/extension": "^3.2.6",
-    "autoprefixer": "^10.0.1",
-    "postcss": "^8"
-  }
+    "name": "next-js",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "data:import": "node mongo/seeder",
+        "data:destroy": "node mongo/seeder -d"
+    },
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "cookie": "^0.6.0",
+        "dotenv": "^16.3.1",
+        "jose": "^5.1.3",
+        "jsonwebtoken": "^9.0.2",
+        "mongoose": "^8.0.2",
+        "next": "^14.0.2",
+        "react": "^18",
+        "react-dom": "^18",
+        "react-redux": "^8.1.3",
+        "redux": "^4.2.1",
+        "redux-thunk": "^2.4.2",
+        "tailwindcss": "^3.3.0"
+    },
+    "devDependencies": {
+        "@redux-devtools/extension": "^3.2.6",
+        "autoprefixer": "^10.0.1",
+        "postcss": "^8"
+    }
 }

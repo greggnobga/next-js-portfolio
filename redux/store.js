@@ -7,28 +7,32 @@ import { composeWithDevTools } from '@redux-devtools/extension';
 
 /** Reducer. */
 import { userAuth } from './reducers/user-reducers';
-import { contactMessage } from './reducers/contact-reducers';
+import { messageList, messageSend } from './reducers/message-reducers';
 import { projectList } from './reducers/project-reducers';
 
 /** Combine reducer. */
 const reducer = combineReducers({
-  userAuth: userAuth,
-  contactMessage: contactMessage,
-  projectList: projectList,
+    userAuth: userAuth,
+    messageList: messageList,
+    messageSend: messageSend,
+    projectList: projectList,
 });
 
 /** Define variables. */
 let userAuthFromStorage;
+let messageListFromStorage;
 
 /** Only run when window is set. */
 if (typeof window !== 'undefined') {
-  /** Get token from local storage. */
-  userAuthFromStorage = localStorage.getItem('userAuth') ? JSON.parse(localStorage.getItem('userAuth')) : '';
+    /** Get state from local storage. */
+    userAuthFromStorage = localStorage.getItem('userAuth') ? JSON.parse(localStorage.getItem('userAuth')) : '';
+    messageListFromStorage = localStorage.getItem('messageList') ? JSON.parse(localStorage.getItem('messageList')) : '';
 }
 
 /** Define initial state. */
 const initialState = {
-  userAuth: userAuthFromStorage,
+    userAuth: userAuthFromStorage,
+    messageList: messageListFromStorage,
 };
 
 /** Middleware. */
