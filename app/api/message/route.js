@@ -27,7 +27,7 @@ export async function GET(request) {
         /** Fetch all messages record. */
         try {
             /** Check for existing record. */
-            const messages = await Message.find({}).select('_id title email name email message read').exec();
+            const messages = await Message.find({ read: true }).select('_id title email name email message read createdAt').limit(25).sort({ createdAt: -1 }).exec();
 
             /** Prevent user from sending multiple message. */
             if (messages) {
@@ -61,7 +61,10 @@ export async function POST(request) {
     /** Prevent user from sending multiple message. */
     if (exist) {
         /** Return warning message. */
-        return NextResponse.json({ message: 'You have already sent a message; please await the developers response.', status: 302 });
+        return NextResponse.json({
+            message: 'You have already sent a message; please await the developers response.',
+            status: 302,
+        });
     }
 
     /** Add to database record. */

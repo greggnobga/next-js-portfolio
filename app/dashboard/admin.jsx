@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 /** Action. */
 import { listMessage } from '../../redux/actions/message-actions';
+import { listProject } from '../../redux/actions/project-actions';
 
 /** Components. */
 import Sprite from '../../components/sprite';
@@ -16,18 +17,26 @@ import Sprite from '../../components/sprite';
 export default function Admin() {
     /** Use selector. */
     const messageList = useSelector((state) => state.messageList);
-    const messages = messageList;
+    const { messages } = messageList;
+
+    const projectList = useSelector((state) => state.projectList);
+    const { projects } = projectList;
 
     /** Use dispatch. */
     const dispatch = useDispatch();
 
     /** Use effect. */
     useEffect(() => {
-        /** Send dispatch to fetch list of messages. */
+        /** Send dispatch to fetch messages list. */
         if (!messages) {
             dispatch(listMessage());
         }
-    }, [messages]);
+
+        /** Send dispatch to fetch project list. */
+        if (!projects) {
+            dispatch(listProject());
+        }
+    }, [dispatch, messages, projects]);
 
     /** Return something. */
     return (
@@ -75,25 +84,60 @@ export default function Admin() {
                         <div className='w-full md:w-1/2'>
                             <h1 className='p-2 text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 rounded-t-md'>Messages</h1>
                             <ul className='relative overflow-x-auto'>
-                                {messages &&
+                                {messages ? (
                                     messages.map((message, id) => {
-                                        console.log(message._id);
                                         return (
                                             <li key={id} className='p-2 stripe text-xs'>
-                                                <Link href={`/dashboard/${message._id}`}>{message.title}</Link>
+                                                <div className='flex flex-row justify-between'>
+                                                    <span>{message.title}</span>
+                                                    <Link href={`/message?id=${message._id}`}>
+                                                        <span className='cursor-pointer text-slate-200'>
+                                                            <Sprite id='view' />
+                                                        </span>
+                                                    </Link>
+                                                </div>
                                             </li>
                                         );
-                                    })}
+                                    })
+                                ) : (
+                                    <li className='p-2 stripe text-xs'>No messages.</li>
+                                )}
                             </ul>
                         </div>
                         <div className='w-full md:w-1/2'>
-                            <h1 className='p-2 text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 rounded-t-md'>Projects</h1>
+                            <div className='flex flex-row justify-between bg-gray-50 dark:bg-gray-700 dark:text-gray-400 rounded-t-md'>
+                                <h1 className='p-2 text-xs text-slate-400 uppercase'>Projects</h1>
+                                <p className='text-slate-200 mr-2 mt-1 cursor-pointer'>
+                                    <Sprite id='create' />
+                                </p>
+                            </div>
                             <ul className='relative overflow-x-auto'>
-                                <li className='p-2 stripe text-xs'>Project 1</li>
-                                <li className='p-2 stripe text-xs'>Project 2</li>
-                                <li className='p-2 stripe text-xs'>Project 3</li>
-                                <li className='p-2 stripe text-xs'>Project 4</li>
-                                <li className='p-2 stripe text-xs'>Project 5</li>
+                                {projects ? (
+                                    projects.map((project, id) => {
+                                        return (
+                                            <li key={id} className='p-2 stripe text-xs'>
+                                                <div className='flex flex-row justify-between'>
+                                                    <span>{project.name}</span>
+                                                    <div className='cursor-pointer'>
+                                                        <span className='text-slate-200 mr-2'>
+                                                            <Link href={`/project/${project.permalink}`}>
+                                                                <Sprite id='view' />
+                                                            </Link>
+                                                        </span>
+                                                        <span className='text-green-500 mr-2'>
+                                                            <Sprite id='update' />
+                                                        </span>
+                                                        <span className='text-red-500'>
+                                                            <Sprite id='delete' />
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        );
+                                    })
+                                ) : (
+                                    <li className='p-2 stripe text-xs'>No projects.</li>
+                                )}
                             </ul>
                         </div>
                     </div>

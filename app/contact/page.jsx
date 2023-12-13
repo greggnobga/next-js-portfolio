@@ -4,6 +4,7 @@
 import { useEffect } from 'react';
 
 /* Vendor. */
+import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 
 /** Action. */
@@ -92,21 +93,34 @@ export default function Contact() {
     }
 
     /** Use selector. */
+    const userAuth = useSelector((state) => state.userAuth);
+    const { logged } = userAuth;
+
     const messageSend = useSelector((state) => state.messageSend);
     const { status: responseStatus, message: responseMessage } = messageSend;
 
+    /** Use router. */
+    const router = useRouter();
+
     /** Use effect. */
     useEffect(() => {
+        /** If logged push to dashboard. */
+        if (logged) {
+            router.push('/dashboard');
+        }
+
         /** Check if response has value. */
         if (responseMessage) {
+            /** Timer clean up function. */
             const timer = setTimeout(() => {
                 /** Reset message. */
                 dispatch(resetMessage());
             }, 5000);
+
             /** Clear running timer. */
             return () => clearTimeout(timer);
         }
-    }, [responseMessage]);
+    }, [dispatch, logged, responseMessage]);
 
     /** Return something. */
     return (
