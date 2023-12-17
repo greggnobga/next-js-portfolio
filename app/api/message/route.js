@@ -27,7 +27,7 @@ export async function GET(request) {
         /** Fetch all messages record. */
         try {
             /** Check for existing record. */
-            const messages = await Message.find({ read: true }).select('_id title email name email message read createdAt').limit(25).sort({ createdAt: -1 }).exec();
+            const messages = await Message.find({ read: false }).select('_id title email name email message read createdAt').limit(25).sort({ createdAt: -1 }).exec();
 
             /** Prevent user from sending multiple message. */
             if (messages) {
@@ -62,7 +62,7 @@ export async function POST(request) {
     if (exist) {
         /** Return warning message. */
         return NextResponse.json({
-            message: 'You have already sent a message; please await the developers response.',
+            message: 'You have already sent a message; please await the developers email.',
             status: 302,
         });
     }
@@ -74,7 +74,7 @@ export async function POST(request) {
         await result.save();
 
         /** Return success message. */
-        return NextResponse.json({ message: 'Message sent successfully', status: 200 });
+        return NextResponse.json({ message: 'The developer will contact you via email within the next 24 hours after your message was successfully submitted.', status: 200 });
     } catch (error) {
         /** Return error message. */
         return NextResponse.json({ message: 'Unable to send a message!', status: 500 });

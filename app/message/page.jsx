@@ -50,12 +50,23 @@ export default function Message() {
     return (
         <section className='p-2 flex flex-col min-h-screen gap-2'>
             {message ? (
-                <div>
-                    <p>Title: {message.title}</p>
-                    <p>Sender Name: {message.name}</p>
-                    <p>Sender Email: {message.email}</p>
-                    <p>Message: {message.message}</p>
-                    <p>Read: {message.read ? 'True' : 'False'}</p>
+                <div className='p-4 flex flex-col place-items-center'>
+                    <div className=' w-6/12 flex flex-row place-items-center border border-blue-400 stripe'>
+                        <p className='w-1/4 p-2 text-xs text-slate-400 bg-gray-700'>Subject</p>
+                        <p className='w-1/2 ml-2'>{message.title}</p>
+                    </div>
+                    <div className=' w-6/12 flex flex-row place-items-center border border-blue-400 stripe'>
+                        <p className='w-1/4 p-2 text-xs text-slate-400 bg-gray-700'>Sender</p>
+                        <p className='w-1/2 ml-2'>{message.name}</p>
+                    </div>
+                    <div className=' w-6/12 flex flex-row place-items-center border border-blue-400 stripe'>
+                        <p className='w-1/4 p-2 text-xs text-slate-400 bg-gray-700'>Email</p>
+                        <p className='w-1/2 ml-2'>{message.email}</p>
+                    </div>
+                    <div className=' w-6/12 p-2 flex flex-col place-items-center border border-blue-400 stripe'>
+                        <p className='w-full p-2 text-xs text-slate-200 uppercase bg-gray-700 rounded-md'>Message</p>
+                        <p className='w-full p-2 ml-2'>{message.message}</p>
+                    </div>
                 </div>
             ) : (
                 <Loader />

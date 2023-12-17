@@ -10,6 +10,11 @@ async function getFeatured() {
     /** Get data from api. */
     const featured = await fetch(`${process.env.HOST}/api/project/featured`, { cache: 'no-store' }).then((data) => data.json());
 
+    /** Return if no record got from api call. */
+    if (!featured) {
+        return {};
+    }
+
     /** Return something. */
     return featured ? (
         featured.map((item, id) => {
@@ -119,7 +124,7 @@ export default async function Home() {
                         <span className='text-green-400'>/</span> Featured Projects
                     </h3>
                 </div>
-                <div className='grid grid-cols-1 gap-2 sm:grid-cols-3 place-items-center w-full'>{projects}</div>
+                <div className='grid grid-cols-1 gap-2 sm:grid-cols-3 place-items-center w-full'>{projects ? projects : <p>No featured projects.</p>}</div>
             </div>
         </section>
     );
