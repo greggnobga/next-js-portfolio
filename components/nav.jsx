@@ -71,8 +71,7 @@ export default function Nav() {
                 hidden ? (
                     ''
                 ) : (
-                    <div
-                        className={`flex flex-col absolute top-12 z-100 bg-slate-900 border border-slate-400 border-opacity-50 rounded-sm text-xs justify-start m-2 w-11/12 z-50`}>
+                    <div className={`flex flex-col absolute top-12 z-100 bg-slate-900 border border-slate-400 border-opacity-50 rounded-sm text-xs justify-start m-2 w-11/12 z-50`}>
                         <Link href='/' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
                             <Sprite id='home' /> Home
                         </Link>
@@ -82,7 +81,7 @@ export default function Nav() {
                         <Link href='/about' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
                             <Sprite id='about' /> About
                         </Link>
-                        {logged ? (
+                        {logged === true ? (
                             <>
                                 <Link href='/dashboard' className='p-2 nav-border nav-hover' onClick={hamburgerHandler}>
                                     <Sprite id='logout' /> Dashboard
@@ -115,7 +114,7 @@ export default function Nav() {
                         <Sprite id='about' /> About
                     </Link>
 
-                    {logged ? (
+                    {logged === true ? (
                         <>
                             <Link href='/dashboard' className='p-2 nav-border nav-hover'>
                                 <Sprite id='logout' /> Dashboard

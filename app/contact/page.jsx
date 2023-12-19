@@ -8,7 +8,8 @@ import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 
 /** Action. */
-import { sendMessage, resetMessage } from '../../redux/actions/message-actions';
+import { sendMessage } from '../../redux/actions/message-actions';
+import { resetToast } from '../../redux/actions/toast-actions';
 
 /** Hook. */
 import useValidator from '../../hooks/use-validator';
@@ -96,8 +97,8 @@ export default function Contact() {
     const userAuth = useSelector((state) => state.userAuth);
     const { logged } = userAuth;
 
-    const messageSend = useSelector((state) => state.messageSend);
-    const { status: responseStatus, message: responseMessage } = messageSend;
+    const toastMessage = useSelector((state) => state.toastMessage);
+    const { status: responseStatus, message: responseMessage } = toastMessage;
 
     /** Use router. */
     const router = useRouter();
@@ -114,7 +115,7 @@ export default function Contact() {
             /** Timer clean up function. */
             const timer = setTimeout(() => {
                 /** Reset message. */
-                dispatch(resetMessage());
+                dispatch(resetToast());
             }, 5000);
 
             /** Clear running timer. */

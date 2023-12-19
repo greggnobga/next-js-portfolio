@@ -1,5 +1,7 @@
 /** Constant. */
-import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE, USER_LOGIN_MESSAGE, USER_LOGIN_LOGOUT } from '../constants/user-constants';
+import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE } from '../constants/user-constants';
+
+import { TOAST_MESSAGE } from '../constants/toast-constants';
 
 export const userLogin = (params) => async (dispatch, getState) => {
     /** Initiate try catch block. */
@@ -18,14 +20,28 @@ export const userLogin = (params) => async (dispatch, getState) => {
         /** Wait for the response. */
         const data = await response.json();
 
-        /** Dispatch success. */
-        dispatch({
-            type: USER_LOGIN_SUCCESS,
-            payload: { email: data.email, name: data.name, admin: data.admin, message: data.message, status: data.status, logged: true },
-        });
+        if (data && data.status <= 300) {
+            /** Dispatch success. */
+            dispatch({
+                type: USER_LOGIN_SUCCESS,
+                payload: { email: data.email, name: data.name, admin: data.admin, message: data.message, status: data.status, logged: data.logged },
+            });
 
-        /** Save access token to local storage. */
-        localStorage.setItem('userAuth', JSON.stringify(data));
+            /** Dispatch toast. */
+            dispatch({
+                type: TOAST_MESSAGE,
+                payload: { message: data.message, status: data.status },
+            });
+
+            /** Save access token to local storage. */
+            localStorage.setItem('userAuth', JSON.stringify(data));
+        } else {
+            /** Dispatch toast. */
+            dispatch({
+                type: TOAST_MESSAGE,
+                payload: { message: data.message, status: data.status },
+            });
+        }
     } catch (error) {
         /** Dispatch failure. */
         dispatch({
@@ -33,14 +49,6 @@ export const userLogin = (params) => async (dispatch, getState) => {
             payload: error.response && error.response.data.message ? error.response.data.message : error.message,
         });
     }
-};
-
-export const userReset = (params) => async (dispatch, getState) => {
-    /** Get user auth state. */
-    const { userAuth } = getState();
-
-    /** Dispatch message reset. */
-    dispatch({ type: USER_LOGIN_MESSAGE, payload: { ...userAuth, message: '' } });
 };
 
 export const userLogout = (params) => async (dispatch, getState) => {
@@ -61,6 +69,9 @@ export const userLogout = (params) => async (dispatch, getState) => {
     localStorage.removeItem('messageList');
     localStorage.removeItem('projectList');
 
+    /** Dispatch request. */
+    dispatch({ type: USER_LOGIN_REQUEST });
+
     /** Dispatch message reset. */
-    dispatch({ type: USER_LOGIN_LOGOUT, payload: { message: data.message } });
+    dispatch({ type: TOAST_MESSAGE, payload: { message: data.message, status: data.status } });
 };

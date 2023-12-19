@@ -10,6 +10,8 @@ import {
     MESSAGE_VIEW_FAILURE,
 } from '../constants/message-constants';
 
+import { TOAST_MESSAGE } from '../constants/toast-constants';
+
 export const sendMessage = (params) => async (dispatch, getState) => {
     /** Initiate try catch block. */
     try {
@@ -31,7 +33,12 @@ export const sendMessage = (params) => async (dispatch, getState) => {
         /** Dispatch success. */
         dispatch({
             type: MESSAGE_SEND_SUCCESS,
-            payload: { status: data.status, title: data.title, message: data.message },
+            payload: { status: data.status, title: data.title },
+        });
+        /** Dispatch toast. */
+        dispatch({
+            type: TOAST_MESSAGE,
+            payload: { status: data.status, message: data.message },
         });
     } catch (error) {
         /** Dispatch failure. */
@@ -105,9 +112,4 @@ export const viewMessage = (id) => async (dispatch, getState) => {
             payload: error.response && error.response.data.message ? error.response.data.message : error.message,
         });
     }
-};
-
-export const resetMessage = (params) => async (dispatch, getState) => {
-    /** Dispatch request. */
-    dispatch({ type: MESSAGE_SEND_REQUEST });
 };

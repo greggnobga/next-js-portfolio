@@ -8,15 +8,15 @@ import Card from '../components/card';
 
 async function getFeatured() {
     /** Get data from api. */
-    const featured = await fetch(`${process.env.HOST}/api/project/featured`, { cache: 'no-store' }).then((data) => data.json());
+    const featured = await fetch(`${process.env.HOST}/api/project/featured`).then((data) => data.json());
 
     /** Return if no record got from api call. */
-    if (!featured) {
-        return {};
+    if (featured.length === 0) {
+        return <p>No data found.</p>;
     }
 
     /** Return something. */
-    return featured ? (
+    return featured && featured.length ? (
         featured.map((item, id) => {
             return <Card key={id} name={item.name} image={item.image} description={item.description} tags={item.tags} permalink={item.permalink} demo={item.demo} />;
         })

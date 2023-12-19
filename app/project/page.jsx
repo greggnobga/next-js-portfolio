@@ -3,22 +3,17 @@ import Card from '../../components/card';
 
 async function getProjects() {
     /** Get data from api. */
-    const data = await fetch(`${process.env.HOST}/api/project`, { cache: 'no-store' }).then((data) => data.json());
+    const data = await fetch(`${process.env.HOST}/api/project`).then((data) => data.json());
+
+    /** Return if no record got from api call. */
+    if (data.length === 0) {
+        return <p>No data found.</p>;
+    }
 
     /** Return something. */
-    return data ? (
+    return data && data.length ? (
         data.map((item, id) => {
-            return (
-                <Card
-                    key={id}
-                    name={item.name}
-                    image={item.image}
-                    description={item.description}
-                    tags={item.tags}
-                    permalink={item.permalink}
-                    demo={item.demo}
-                />
-            );
+            return <Card key={id} name={item.name} image={item.image} description={item.description} tags={item.tags} permalink={item.permalink} demo={item.demo} />;
         })
     ) : (
         <p>No featured project so far.</p>

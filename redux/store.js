@@ -8,6 +8,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { userAuth } from './reducers/user-reducers';
 import { messageSend, messageList, messageView } from './reducers/message-reducers';
 import { projectList } from './reducers/project-reducers';
+import { toastMessage } from './reducers/toast-reducers';
 
 /** Combine reducer. */
 const reducer = combineReducers({
@@ -16,6 +17,7 @@ const reducer = combineReducers({
     messageList: messageList,
     messageView: messageView,
     projectList: projectList,
+    toastMessage: toastMessage,
 });
 
 /** Define variables. */
