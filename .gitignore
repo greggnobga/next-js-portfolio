@@ -46,8 +46,6 @@ yarn-error.log\*
 next-env.d.ts
 
 # Docker
-
-init-mongo.js
 docker-compose.yml
 dockerfile
-dockerfile-production
+dockerfile.production

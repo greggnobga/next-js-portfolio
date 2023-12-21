@@ -6,28 +6,28 @@ import Sprite from '../components/sprite';
 import Hero from '../components/hero';
 import Card from '../components/card';
 
-async function getFeatured() {
-    /** Get data from api. */
-    const featured = await fetch(`${process.env.HOST}/api/project/featured`).then((data) => data.json());
+// async function getFeatured() {
+//     /** Get data from api. */
+//     const featured = await fetch(`${process.env.HOST}/api/project/featured`).then((data) => data.json());
 
-    /** Return if no record got from api call. */
-    if (featured.length === 0) {
-        return <p>No data found.</p>;
-    }
+//     /** Return if no record got from api call. */
+//     if (featured.length === 0) {
+//         return <p>No data found.</p>;
+//     }
 
-    /** Return something. */
-    return featured && featured.length ? (
-        featured.map((item, id) => {
-            return <Card key={id} name={item.name} image={item.image} description={item.description} tags={item.tags} permalink={item.permalink} demo={item.demo} />;
-        })
-    ) : (
-        <p>No featured project so far.</p>
-    );
-}
+//     /** Return something. */
+//     return featured && featured.length ? (
+//         featured.map((item, id) => {
+//             return <Card key={id} name={item.name} image={item.image} description={item.description} tags={item.tags} permalink={item.permalink} demo={item.demo} />;
+//         })
+//     ) : (
+//         <p>No featured project so far.</p>
+//     );
+// }
 
 export default async function Home() {
     /** Get featured projects. */
-    const projects = await getFeatured();
+    // const projects = await getFeatured();
 
     /** Return something. */
     return (
@@ -124,7 +124,7 @@ export default async function Home() {
                         <span className='text-green-400'>/</span> Featured Projects
                     </h3>
                 </div>
-                <div className='grid grid-cols-1 gap-2 sm:grid-cols-3 place-items-center w-full'>{projects ? projects : <p>No featured projects.</p>}</div>
+                {/* <div className='grid grid-cols-1 gap-2 sm:grid-cols-3 place-items-center w-full'>{projects ? projects : <p>No featured projects.</p>}</div> */}
             </div>
         </section>
     );

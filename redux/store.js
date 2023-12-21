@@ -1,7 +1,7 @@
 'use client';
 
 /** Vendor. */
-import thunk from 'redux-thunk';
+import { thunk } from 'redux-thunk';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 
 /** Reducer. */
