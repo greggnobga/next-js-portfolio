@@ -15,7 +15,7 @@ import { resetToast } from '../../redux/actions/toast-actions';
 import useValidator from '../../hooks/use-validator';
 
 /** Component. */
-import Notifications from '../../components/notifications';
+import Notifications from '../../components/ui/notifications';
 
 export default function Login() {
     /** Map html element to validate hook. */

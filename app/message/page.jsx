@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { viewMessage } from '../../redux/actions/message-actions';
 
 /** Component. */
-import Loader from '../../components/loader';
+import Loader from '../../components/ui/loader';
 
 export default function Message() {
     /** Use search params. */

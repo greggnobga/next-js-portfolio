@@ -8,10 +8,10 @@ import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 
 /** Hooks. */
-import useScreen from '../hooks/use-screen';
+import useScreen from '../../hooks/use-screen';
 
 /** Action. */
-import { userLogout } from '../redux/actions/user-actions.js';
+import { userLogout } from '../../redux/actions/user-actions.js';
 
 /** Components. */
 import Sprite from './sprite';

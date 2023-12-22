@@ -2,36 +2,34 @@
 import Image from 'next/image';
 
 /** Components. */
-import Sprite from '../../../components/sprite';
+import Sprite from '../../../components/ui/sprite';
 
+/** Get project details for server side rendering. */
 export async function getDetails({ permalink }) {
     /** Get data from api. */
-    const details = await fetch(`${process.env.HOST}/api/project/${permalink}`, { cache: 'no-store' }).then((data) =>
-        data.json(),
-    );
+    const details = await fetch(`${process.env.HOST}/api/project/${permalink}`, { cache: 'no-store' }).then((data) => data.json());
 
     /** Return something. */
     return details ? details : {};
 }
 
+/** Default export. */
 export default async function PojectDetails({ params }) {
+    /** Gert parametr value. */
     const { permalink } = await params;
 
+    /** Featch project details. */
     const details = await getDetails({ permalink });
 
+    /** Split tags. */
     const tags = details ? details.tags.split(' ') : [];
 
+    /** Return something. */
     return (
         <section className='p-2 flex flex-col min-h-screen gap-2'>
             <div className='grid grid-cols-1 sm:grid-cols-2 place-content-start'>
                 <div className='p-2'>
-                    <Image
-                        className='object-cover object-top w-full h-1/2'
-                        src={details.image}
-                        width={750}
-                        height={750}
-                        alt={details.name}
-                    />
+                    <Image className='object-cover object-top w-full h-1/2' src={details.image} width={750} height={750} alt={details.name} />
                 </div>
                 <div className='p-2'>
                     <div className='flex flex-wrap justify-between'>
@@ -50,10 +48,7 @@ export default async function PojectDetails({ params }) {
                         <span className='text-green-400'>/</span> Technical Sheet
                     </h3>
                     <hr className='w-48 h-px my-2 bg-gray-200 border-0 dark:bg-gray-700' />
-                    <p className='py-2 text-slate-300 text-xs'>
-                        Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-                        consequatur.
-                    </p>
+                    <p className='py-2 text-slate-300 text-xs'>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
                     <ul className='py-2 text-slate-300 text-xs'>
                         {tags &&
                             tags.map((item, id) => {

@@ -1,5 +1,5 @@
 /** Components. */
-import Sprite from '../../components/sprite';
+import Sprite from '../../components/ui/sprite';
 
 export default function About() {
     return (

@@ -1,6 +1,6 @@
 /** Hook. */
-import Loader from '../components/loader';
+import Loader from '../components/ui/loader';
 
 export default function Loading() {
-  return <Loader />;
+    return <Loader />;
 }

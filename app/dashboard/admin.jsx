@@ -12,7 +12,7 @@ import { listMessage } from '../../redux/actions/message-actions';
 import { listProject } from '../../redux/actions/project-actions';
 
 /** Components. */
-import Sprite from '../../components/sprite';
+import Sprite from '../../components/ui/sprite';
 
 export default function Admin() {
     /** Use selector. */

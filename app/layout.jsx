@@ -2,8 +2,8 @@
 import StoreProvider from '../redux/store-provider';
 
 /** Components */
-import Nav from '../components/nav';
-import Footer from '../components/footer';
+import Nav from '../components/ui/nav';
+import Footer from '../components/ui/footer';
 
 /** Font */
 import { Montserrat } from 'next/font/google';
@@ -15,7 +15,7 @@ import '../styles/vendors/hamburger.css';
 const montserrat = Montserrat({ subsets: ['latin'] });
 
 export const metadata = {
-    title: 'Orion Docker Mongo Next Portfolio Application',
+    title: 'Reijo N | Full Stack Web Developer',
     description: 'Success starts with a single step.',
     referrer: 'no-referrer',
 };

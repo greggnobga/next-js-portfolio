@@ -2,33 +2,11 @@
 import Link from 'next/link';
 
 /** Components. */
-import Sprite from '../components/sprite';
-import Hero from '../components/hero';
-import Card from '../components/card';
-
-// async function getFeatured() {
-//     /** Get data from api. */
-//     const featured = await fetch(`${process.env.HOST}/api/project/featured`).then((data) => data.json());
-
-//     /** Return if no record got from api call. */
-//     if (featured.length === 0) {
-//         return <p>No data found.</p>;
-//     }
-
-//     /** Return something. */
-//     return featured && featured.length ? (
-//         featured.map((item, id) => {
-//             return <Card key={id} name={item.name} image={item.image} description={item.description} tags={item.tags} permalink={item.permalink} demo={item.demo} />;
-//         })
-//     ) : (
-//         <p>No featured project so far.</p>
-//     );
-// }
+import Sprite from '../components/ui/sprite';
+import Hero from '../components/ui/hero';
+import Featured from '../components/featured';
 
 export default async function Home() {
-    /** Get featured projects. */
-    // const projects = await getFeatured();
-
     /** Return something. */
     return (
         <section className='p-2 flex flex-col min-h-screen gap-2'>
@@ -83,10 +61,10 @@ export default async function Home() {
                             <Sprite id='arrow-forward' /> Docker
                         </p>
                         <p className='px-2 py-2'>
-                            <Sprite id='arrow-forward' /> Apache
+                            <Sprite id='arrow-forward' /> Nginx
                         </p>
                         <p className='px-2 py-2'>
-                            <Sprite id='arrow-forward' /> Node
+                            <Sprite id='arrow-forward' /> Apache
                         </p>
                     </div>
                     <div className='p-1 text-xs sm:p-2 sm:text-sm'>
@@ -96,10 +74,10 @@ export default async function Home() {
                             <Sprite id='arrow-forward' /> Laravel
                         </p>
                         <p className='px-2 py-2'>
-                            <Sprite id='arrow-forward' /> Wordpress
+                            <Sprite id='arrow-forward' /> Django
                         </p>
                         <p className='px-2 py-2'>
-                            <Sprite id='arrow-forward' /> Django
+                            <Sprite id='arrow-forward' /> Node
                         </p>
                     </div>
                     <div className='p-1 text-xs sm:p-2 sm:text-sm'>
@@ -124,7 +102,9 @@ export default async function Home() {
                         <span className='text-green-400'>/</span> Featured Projects
                     </h3>
                 </div>
-                {/* <div className='grid grid-cols-1 gap-2 sm:grid-cols-3 place-items-center w-full'>{projects ? projects : <p>No featured projects.</p>}</div> */}
+                <div className='grid grid-cols-1 gap-2 sm:grid-cols-3 place-items-center w-full'>
+                    <Featured />
+                </div>
             </div>
         </section>
     );
