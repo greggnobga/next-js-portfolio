@@ -63,7 +63,7 @@ export const featuredProject = () => async (dispatch, getState) => {
         dispatch({ type: PROJECT_FEATURED_SUCCESS, payload: { featured: data } });
 
         /** Save messages to local storage. */
-        localStorage.setItem('projectFeaturedD', JSON.stringify(data));
+        localStorage.setItem('projectFeatured', JSON.stringify(data));
     } catch (error) {
         /** Dispatch failure. */
         dispatch({

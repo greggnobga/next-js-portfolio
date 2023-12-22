@@ -80,7 +80,7 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-            <div className='w-full text-center text-xs font-thin'>All rights reserved. San Jose Del Monte, Bulacan, Philippines.</div>
+            <div className='w-full text-center text-[.50rem] pb-0.5 font-thin'>All rights reserved. San Jose Del Monte, Bulacan, Philippines.</div>
         </footer>
     );
 }
