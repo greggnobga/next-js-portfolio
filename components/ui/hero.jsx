@@ -45,7 +45,7 @@ export default function Hero() {
                             Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi
                             nesciunt.
                         </p>
-                        <Link href='/projects' className='block text-right mx-2'>
+                        <Link href='/project' className='block text-right mx-2'>
                             <span className='border-b pb-2 text-xs nav-hover'>
                                 Learn More <Sprite id='arrow-forward' />
                             </span>
