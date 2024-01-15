@@ -108,7 +108,7 @@ export default function Login() {
             </h1>
             {responseMessage ? <Notifications message={responseMessage} status={responseStatus} /> : ''}
             <div className='p-2 grid grid-cols-1'>
-                <form onSubmit={submitHandler}>
+                <form onSubmit={submitHandler} method='POST'>
                     <div className='relative z-0 w-full mb-6 group'>
                         <input
                             className={`peer ${emailInputClasses}`}
@@ -122,7 +122,7 @@ export default function Login() {
                             placeholder=''
                             required
                         />
-                        {emailHasError && <p className='input-message'>Please enter a valid email.</p>}
+                        {emailHasError ? <p className='input-message'>Please enter a valid email.</p> : ''}
                         <label htmlFor='email' className='peer-focus:font-medium input-label'>
                             Email address
                         </label>
@@ -140,7 +140,7 @@ export default function Login() {
                             placeholder=''
                             required
                         />
-                        {passwordHasError && <p className='input-message'>Please enter a valid password.</p>}
+                        {passwordHasError ? <p className='input-message'>Please enter a valid password.</p> : ''}
                         <label htmlFor='email' className='peer-focus:font-medium input-label'>
                             Password
                         </label>

@@ -29,7 +29,7 @@ export default async function PojectDetails({ params }) {
         <section className='p-2 flex flex-col min-h-screen gap-2'>
             <div className='grid grid-cols-1 sm:grid-cols-2 place-content-start'>
                 <div className='p-2'>
-                    <Image className='object-cover object-top w-full h-1/2' src={details.image} width={750} height={750} alt={details.name} />
+                    <Image className='object-cover object-top w-full h-fit' src={details.image} width={750} height={750} alt={details.name} />
                 </div>
                 <div className='p-2'>
                     <div className='flex flex-wrap justify-between'>

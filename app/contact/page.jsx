@@ -63,7 +63,7 @@ export default function Contact() {
 
     /** Set overall form validity. */
     let formIsValid = false;
-    if (nameIsValid && messageIsValid) {
+    if (nameIsValid && titleIsValid && emailIsValid && messageIsValid) {
         formIsValid = true;
     }
 
@@ -149,7 +149,7 @@ export default function Contact() {
                             placeholder=''
                             required
                         />
-                        {emailHasError && <p className='input-message'>Please enter a valid email.</p>}
+                        {emailHasError ? <p className='input-message'>Please enter a valid email.</p> : ''}
                         <label htmlFor='email' className='peer-focus:font-medium input-label'>
                             Email address
                         </label>
@@ -167,7 +167,7 @@ export default function Contact() {
                             placeholder=''
                             required
                         />
-                        {nameHasError && <p className='input-message'>Please enter a valid name.</p>}
+                        {nameHasError ? <p className='input-message'>Please enter a valid name.</p> : ''}
                         <label htmlFor='name' className='peer-focus:font-medium input-label'>
                             Name
                         </label>
@@ -185,7 +185,7 @@ export default function Contact() {
                             placeholder=''
                             required
                         />
-                        {titleHasError && <p className='input-message'>Please enter a valid name.</p>}
+                        {titleHasError ? <p className='input-message'>Please enter a valid name.</p> : ''}
                         <label htmlFor='name' className='peer-focus:font-medium input-label'>
                             Title
                         </label>
@@ -206,7 +206,7 @@ export default function Contact() {
                             autoComplete='off'
                             placeholder='Type your message here.'
                             required></textarea>
-                        {messageHasError && <p className='input-message'>One of the characters you entered is not allowed.</p>}
+                        {messageHasError ? <p className='input-message'>One of the characters you entered is not allowed.</p> : ''}
                     </div>
                     <button type='submit' className='button-primary' disabled={!formIsValid}>
                         Send Message

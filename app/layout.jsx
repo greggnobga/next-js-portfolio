@@ -23,12 +23,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang='en'>
-            <body className={`gotham text-slate-300 leading-5 montserrat.className`}>
+            <body className={`gotham text-slate-300 leading-5 ${montserrat.className}`}>
                 <StoreProvider>
-                    <main className='h-m-screen'>
+                    <header>
                         <Nav />
-                        {children}
-                    </main>
+                    </header>
+                    <main className='h-m-screen'>{children}</main>
                     <Footer />
                 </StoreProvider>
             </body>
