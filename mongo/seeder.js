@@ -16,43 +16,43 @@ import projects from './data/projects.js';
 dotenv.config();
 
 const importData = async () => {
-  await mongoose.connect(process.env.MONGO_SEEDER_URI, {});
+    await mongoose.connect(process.env.MONGO_SEEDER_URI, {});
 
-  try {
-    await User.deleteMany();
-    await Message.deleteMany();
-    await Project.deleteMany();
+    try {
+        await User.deleteMany();
+        await Message.deleteMany();
+        await Project.deleteMany();
 
-    await User.insertMany(users);
-    await Message.insertMany(messages);
-    await Project.insertMany(projects);
+        await User.insertMany(users);
+        await Message.insertMany(messages);
+        await Project.insertMany(projects);
 
-    console.log('Data imported.');
-    process.exit();
-  } catch (error) {
-    console.log(`Error: ${error.message}`);
-    process.exit(1);
-  }
+        console.log('Data imported.');
+        process.exit();
+    } catch (error) {
+        console.log(`Error: ${error.message}`);
+        process.exit(1);
+    }
 };
 
 const destroyData = async () => {
-  await mongoose.connect(process.env.MONGO_SEEDER_URI, {});
+    await mongoose.connect(process.env.MONGO_SEEDER_URI, {});
 
-  try {
-    await User.deleteMany();
-    await Message.deleteMany();
-    await Project.deleteMany();
+    try {
+        await User.deleteMany();
+        await Message.deleteMany();
+        await Project.deleteMany();
 
-    console.log('Data destroyed.');
-    process.exit();
-  } catch (error) {
-    console.log(`Error: ${error.message}`);
-    process.exit(1);
-  }
+        console.log('Data destroyed.');
+        process.exit();
+    } catch (error) {
+        console.log(`Error: ${error.message}`);
+        process.exit(1);
+    }
 };
 
 if (process.argv[2] === '-d') {
-  destroyData();
+    destroyData();
 } else {
-  importData();
+    importData();
 }

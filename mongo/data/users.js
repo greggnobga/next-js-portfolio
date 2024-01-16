@@ -7,22 +7,22 @@ dotenv.config();
 
 /** Define users data. */
 const users = [
-  {
-    email: 'reijo@buntod.com',
-    name: 'Reijo N',
-    password: bcrypt.hashSync(process.env.SEEDER_PASSWORD),
-    admin: true,
-  },
-  {
-    email: 'orion@buntod.com',
-    name: 'Orion N',
-    password: bcrypt.hashSync(process.env.SEEDER_PASSWORD),
-  },
-  {
-    email: 'grigor@buntod.com',
-    name: 'Orion N',
-    password: bcrypt.hashSync(process.env.SEEDER_PASSWORD),
-  },
+    {
+        email: 'reijo@buntod.com',
+        name: 'Reijo N',
+        password: bcrypt.hashSync(process.env.SEEDER_PASSWORD, 12),
+        admin: true,
+    },
+    {
+        email: 'orion@buntod.com',
+        name: 'Orion N',
+        password: bcrypt.hashSync(process.env.SEEDER_PASSWORD, 12),
+    },
+    {
+        email: 'grigor@buntod.com',
+        name: 'Orion N',
+        password: bcrypt.hashSync(process.env.SEEDER_PASSWORD, 12),
+    },
 ];
 
 export default users;
