@@ -35,7 +35,7 @@ export async function POST(request) {
                 headers: {
                     'Set-Cookie': cookie.serialize('token', await generateToken({ id: user._id, admin: user.admin }), {
                         httpOnly: true,
-                        secure: process.env.NODE_ENV !== 'development',
+                        secure: process.env.APP_ENV !== 'development',
                         MaxAge: 60 * 60,
                         sameSite: 'strict',
                         path: '/',
