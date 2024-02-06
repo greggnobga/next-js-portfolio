@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 export async function POST(request) {
     /** Return something. */
     return NextResponse.json(
-        { message: ' Cookie has been deleted.', status: 200 },
+        { message: '', status: 200 },
         {
             headers: {
                 'Set-Cookie': cookie.serialize('token', '', {

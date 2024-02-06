@@ -16,7 +16,7 @@ import Card from './ui/card';
 export default function Projects() {
     /** Use selector. */
     const projectList = useSelector((state) => state.projectList);
-    const { loading, projects } = projectList;
+    const { projects } = projectList;
 
     /** Use dispatch. */
     const dispatch = useDispatch();
@@ -30,13 +30,9 @@ export default function Projects() {
     }, [dispatch, projects]);
 
     /** Return something. */
-    return projects ? (
-        projects.map((item, id) => {
-            return <Card key={id} name={item.name} image={item.image} description={item.description} tags={item.tags} permalink={item.permalink} demo={item.demo} />;
-        })
-    ) : loading ? (
-        <Loader />
-    ) : (
-        <p className='text-xs'>Loading projects...</p>
-    );
+    return projects
+        ? projects.map((item, id) => {
+              return <Card key={id} name={item.name} image={item.image} description={item.description} tags={item.tags} permalink={item.permalink} demo={item.demo} />;
+          })
+        : '';
 }
