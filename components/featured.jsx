@@ -30,9 +30,13 @@ export default function Featured() {
     }, [dispatch, featured]);
 
     /** Return something. */
-    return featured
-        ? featured.map((item, id) => {
-              return <Card key={id} name={item.name} image={item.image} description={item.description} tags={item.tags} permalink={item.permalink} demo={item.demo} />;
-          })
-        : '';
+    return featured ? (
+        featured.map((item, id) => {
+            return <Card key={id} name={item.name} image={item.image} description={item.description} tags={item.tags} permalink={item.permalink} demo={item.demo} />;
+        })
+    ) : (
+        <div className='col-span-3 text-center'>
+            <Loader />
+        </div>
+    );
 }
