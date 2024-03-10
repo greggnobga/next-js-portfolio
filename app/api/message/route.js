@@ -4,6 +4,7 @@ import { NextResponse } from 'next/server';
 /** Library. */
 import Database from '../../../lib/db';
 import Watcher from '../../../lib/watcher';
+import { Mailer } from '../../../lib/mailer';
 import { Sanitizer } from '../../../lib/sanitizer';
 
 /** Model. */
@@ -66,6 +67,9 @@ export async function POST(request) {
             status: 302,
         });
     }
+
+    /** Send Mail. */
+    await Mailer({ sender: filtered.email, receiver: 'reijonobga@gmail.com', subject: filtered.title, text: filtered.message });
 
     /** Add to database record. */
     try {

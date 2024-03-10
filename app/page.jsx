@@ -6,6 +6,9 @@ import Sprite from '../components/ui/sprite';
 import Hero from '../components/ui/hero';
 import Featured from '../components/featured';
 
+/** Force build to dynamic. */
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
     /** Return something. */
     return (
