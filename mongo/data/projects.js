@@ -30,7 +30,7 @@ const projects = [
         name: 'Libro',
         description: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.',
         image: '/images/libro.png',
-        tags: 'docker nginx nextjs mongodb react redux tailwind',
+        tags: 'docker nginx wordpress mysql flowbite tailwind',
         permalink: 'libro',
         demo: 'https://libro.buntod.com/',
     },

@@ -69,7 +69,7 @@ export async function POST(request) {
     }
 
     /** Send Mail. */
-    await Mailer({ sender: filtered.email, receiver: 'reijonobga@gmail.com', subject: filtered.title, text: filtered.message });
+    await Mailer({ sender: filtered.email, receiver: 'reijonobga@gmail.com', subject: 'Portfolio: ' + filtered.title, text: filtered.message });
 
     /** Add to database record. */
     try {
