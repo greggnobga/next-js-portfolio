@@ -133,8 +133,7 @@ export default function Contact() {
             <div className='p-2 grid grid-cols-1'>
                 <form onSubmit={submitHandler}>
                     <p className='pb-4 text-xs text-slate-400'>
-                        In a hurry? Email me directly at <span className='text-green-500'>reijonobga@gmail.com</span>. To ensure that the email is correctly routed to the work
-                        email and stays out of the spam bin, start the subject line with [Dev].
+                        To ensure that the email is correctly routed to the work email and stays out of the spam bin, start the subject line with [Dev].
                     </p>
                     <div className='relative z-0 w-full mb-6 group'>
                         <input
@@ -187,7 +186,7 @@ export default function Contact() {
                         />
                         {titleHasError ? <p className='input-message'>Please enter a valid name.</p> : ''}
                         <label htmlFor='name' className='peer-focus:font-medium input-label'>
-                            Title
+                            Subject
                         </label>
                     </div>
                     <div className='relative z-0 w-full mb-6 group'>

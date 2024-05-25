@@ -2,7 +2,7 @@ const projects = [
     {
         name: 'Portfolio',
         description:
-            'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+            'A portfolio website created with current frameworks demonstrates technical acumen and creativity with a sleek, responsive design and seamless user experience.',
         image: '/images/portfolio.png',
         tags: 'docker nginx nextjs mongodb react redux tailwind',
         permalink: 'portfolio',
@@ -10,8 +10,7 @@ const projects = [
     },
     {
         name: 'Trade',
-        description:
-            'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.',
+        description: 'A trading website built using Laravel and React offers a robust and dynamic platform for users to manage their trading activities.',
         image: '/images/trade.png',
         tags: 'docker nginx apache mysql php laravel react redux tailwind',
         permalink: 'trade',
@@ -19,8 +18,7 @@ const projects = [
     },
     {
         name: 'Tindahan',
-        description:
-            'Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.',
+        description: 'A shop website developed using Next and Tailwind CSS provides a modern, performant, and visually appealing platform for online retail.',
         image: '/images/tindahan.png',
         tags: 'docker nginx nextjs mongodb react redux tailwind',
         permalink: 'tindahan',
@@ -28,7 +26,8 @@ const projects = [
     },
     {
         name: 'Libro',
-        description: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.',
+        description:
+            'A book website built using wordpress offers a comprehensive and user friendly platform for bibliophiles. Additionally, responsive design ensures optimal accessibility on both desktop and mobile devices.',
         image: '/images/libro.png',
         tags: 'docker nginx wordpress mysql flowbite tailwind',
         permalink: 'libro',

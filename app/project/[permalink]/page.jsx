@@ -48,7 +48,7 @@ export default async function PojectDetails({ params }) {
                         <span className='text-green-400'>/</span> Technical Sheet
                     </h3>
                     <hr className='w-48 h-px my-2 bg-gray-200 border-0 dark:bg-gray-700' />
-                    <p className='py-2 text-slate-300 text-xs'>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
+                    <p className='py-2 text-slate-300 text-xs'>Built with the following list below:</p>
                     <ul className='py-2 text-slate-300 text-xs'>
                         {tags &&
                             tags.map((item, id) => {

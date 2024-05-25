@@ -19,12 +19,10 @@ export default async function Home() {
                     <h3 className='p-2 font-thin uppercase text-sm'>
                         <span className='text-green-400'>/</span> About Me
                     </h3>
-                    <h1 className='p-2 text-3xl'>I've been developing websites since 0000</h1>
+                    <h1 className='p-2 text-3xl'>I have been developing websites since 2024</h1>
                     <p className='p-2 text-xs text-justify'>
-                        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
-                        dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea
-                        commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat
-                        quo voluptas nulla pariatur.
+                        After gaining essential experience and abilities in creating dynamic, high performance web applications, Initially focusing on the fundamentals, I quickly
+                        acquired HTML, CSS, and JAVASCRIPT before diving into current frameworks for creating interesting and efficient user experiences.
                     </p>
                     <Link href='/about' className='block text-right mb-2'>
                         <span className='border-b pb-2 text-xs nav-hover'>
@@ -35,16 +33,16 @@ export default async function Home() {
                 <div className='p-2'>
                     <div className='p-2 flex flex-row flex-wrap justify-around align-center'>
                         <div className='w-32 sm:w-48 pb-4 text-center'>
-                            <span className='text-3xl'>00</span> <span className='text-xs'>Years of experience</span>
+                            <span className='text-3xl'>01</span> <span className='text-xs'>Years of experience</span>
                         </div>
                         <div className='w-32 sm:w-48 text-center'>
-                            <span className='text-3xl'>00</span> <span className='text-xs'>Successful projects</span>
+                            <span className='text-3xl'>04</span> <span className='text-xs'>Successful projects</span>
                         </div>
                     </div>
                     <div className='p-2'>
                         <p className='p-2 text-xs text-justify'>
-                            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum
-                            iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+                            Reijo completed a successful web development project for a very delighted client, which was a key milestone in his career. He began by working closely
+                            with the client to understand their vision, requirements, and business goals.
                         </p>
                     </div>
                 </div>
