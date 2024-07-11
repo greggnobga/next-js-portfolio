@@ -14,13 +14,13 @@ export default async function Home() {
     return (
         <section className='p-2 flex flex-col min-h-screen gap-2'>
             <Hero />
-            <div className='grid grid-cols-1 sm:grid-cols-2 place-items-center bg-slate-800 bg-opacity-20 w-full h-fit sm:h-[75vh]'>
-                <div className='p-2'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 place-items-center bg-slate-800 bg-opacity-20 w-full h-fit py-16'>
+                <div className='px-2 py-8'>
                     <h3 className='p-2 font-thin uppercase text-sm'>
                         <span className='text-green-400'>/</span> About Me
                     </h3>
                     <h1 className='p-2 text-3xl'>I have been developing websites since 2024</h1>
-                    <p className='p-2 text-xs text-justify'>
+                    <p className='p-2 text-xs text-left'>
                         After gaining essential experience and abilities in creating dynamic, high performance web applications, Initially focusing on the fundamentals, I quickly
                         acquired HTML, CSS, and JAVASCRIPT before diving into current frameworks for creating interesting and efficient user experiences.
                     </p>
@@ -40,7 +40,7 @@ export default async function Home() {
                         </div>
                     </div>
                     <div className='p-2'>
-                        <p className='p-2 text-xs text-justify'>
+                        <p className='p-2 text-xs text-left'>
                             Reijo completed a successful web development project for a very delighted client, which was a key milestone in his career. He began by working closely
                             with the client to understand their vision, requirements, and business goals.
                         </p>
@@ -48,7 +48,7 @@ export default async function Home() {
                 </div>
             </div>
 
-            <div className='grid grid-cols-1 place-items-start bg-slate-700 bg-opacity-20 w-full h-[50vh]'>
+            <div className='grid grid-cols-1 place-items-start bg-slate-700 bg-opacity-20 w-full h-auto py-16'>
                 <div className='p-0'>
                     <h3 className='p-2 font-thin uppercase text-sm'>
                         <span className='text-green-400'>/</span> Dev Stack
@@ -57,7 +57,7 @@ export default async function Home() {
                 <div className='grid grid-cols-3 place-items-center w-full'>
                     <div className='p-1 text-xs sm:p-2 sm:text-sm'>
                         <h2 className='text-sm font-thin'>Server</h2>
-                        <hr className='w-24 h-px my-1 bg-gray-200 border-0 dark:bg-gray-700' />
+                        <hr className='w-24 h-px my-1 border-0 bg-gray-700' />
                         <p className='px-2 py-2'>
                             <Sprite id='arrow-forward' /> Docker
                         </p>
@@ -70,7 +70,7 @@ export default async function Home() {
                     </div>
                     <div className='p-1 text-xs sm:p-2 sm:text-sm'>
                         <h2 className='text-sm font-thin'>Backend</h2>
-                        <hr className='w-24 h-px my-1 bg-gray-200 border-0 dark:bg-gray-700' />
+                        <hr className='w-24 h-px my-1 border-0 bg-gray-700' />
                         <p className='px-2 py-2'>
                             <Sprite id='arrow-forward' /> Laravel
                         </p>
@@ -83,7 +83,7 @@ export default async function Home() {
                     </div>
                     <div className='p-1 text-xs sm:p-2 sm:text-sm'>
                         <h2 className='text-sm font-thin'>Frontend</h2>
-                        <hr className='w-24 h-px my-1 bg-gray-200 border-0 dark:bg-gray-700' />
+                        <hr className='w-24 h-px my-1 border-0 bg-gray-700' />
                         <p className='px-4 py-2'>
                             <Sprite id='arrow-forward' /> Next JS
                         </p>
@@ -103,7 +103,7 @@ export default async function Home() {
                         <span className='text-green-400'>/</span> Featured Projects
                     </h3>
                 </div>
-                <div className='grid grid-cols-1 gap-2 sm:grid-cols-3 place-items-center w-full'>
+                <div className='grid grid-cols-1 gap-2 sm:grid-cols-3 place-items-center w-full pt-4 pb-8'>
                     <Featured />
                 </div>
             </div>

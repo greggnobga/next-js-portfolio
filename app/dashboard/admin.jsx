@@ -42,7 +42,7 @@ export default function Admin() {
     return (
         <section className='p-2 flex min-h-screen flex-col gap-2'>
             <div className='grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-2 h-fit'>
-                <div className='pb-4 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 rounded-t-md'>
+                <div className='pb-4 bg-gray-800 border-gray-700 rounded-t-md'>
                     <div className='pt-4 flex place-content-center'>
                         <div className='p-4'>
                             <img className='w-24 h-24 border shadow rounded-full' src='/images/about.png' alt='Orion' />
@@ -82,7 +82,7 @@ export default function Admin() {
                 <div className='pb-4 col-span-3'>
                     <div className='flex flex-col sm:flex-row gap-2 h-fit'>
                         <div className='w-full md:w-1/2'>
-                            <h1 className='p-2 text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 rounded-t-md'>Messages</h1>
+                            <h1 className='p-2 text-xs uppercase bg-gray-700 text-gray-400 rounded-t-md'>Messages</h1>
                             <ul className='relative overflow-x-auto'>
                                 {messages ? (
                                     messages.map((message, id) => {
@@ -105,7 +105,7 @@ export default function Admin() {
                             </ul>
                         </div>
                         <div className='w-full md:w-1/2'>
-                            <div className='flex flex-row justify-between bg-gray-50 dark:bg-gray-700 dark:text-gray-400 rounded-t-md'>
+                            <div className='flex flex-row justify-between bg-gray-700 text-gray-400 rounded-t-md'>
                                 <h1 className='p-2 text-xs text-slate-400 uppercase'>Projects</h1>
                                 <p className='text-slate-200 mr-2 mt-1 cursor-pointer'>
                                     <Sprite id='create' />

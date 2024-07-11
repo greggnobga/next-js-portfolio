@@ -12,7 +12,7 @@ export default function Footer() {
                     <h1 className='uppercase'>
                         <span className='text-green-400'>/</span> Resources
                     </h1>
-                    <hr className='w-full h-px my-1 bg-gray-200 border-0 dark:bg-gray-700' />
+                    <hr className='w-full h-px my-1 border-0 bg-gray-700' />
                     <Link href='/'>
                         <span className='py-2 w-full block border-b border-gray-700 border-opacity-40'>
                             <Sprite id='home' /> Home
@@ -43,7 +43,7 @@ export default function Footer() {
                     <h1 className='uppercase'>
                         <span className='text-green-400'>/</span> Socials
                     </h1>
-                    <hr className='w-full h-px my-1 bg-gray-200 border-0 dark:bg-gray-700' />
+                    <hr className='w-full h-px my-1 border-0 bg-gray-700' />
                     <Link href='#'>
                         <span className='py-2 w-full block border-b border-gray-700 border-opacity-40'>
                             <Sprite id='google' /> Google
@@ -74,7 +74,7 @@ export default function Footer() {
                     <h1 className='uppercase'>
                         <span className='text-green-400'>/</span> Contact Me
                     </h1>
-                    <hr className='w-full h-px my-1 bg-gray-200 border-0 dark:bg-gray-700' />
+                    <hr className='w-full h-px my-1 border-0 bg-gray-700' />
                     <div className='grid grid-cols-1 place-items-center align-middle w-full h-full'>
                         <Link href='/contact'>Send Reijo N A Message</Link>
                     </div>

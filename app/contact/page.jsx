@@ -190,7 +190,7 @@ export default function Contact() {
                         </label>
                     </div>
                     <div className='relative z-0 w-full mb-6 group'>
-                        <label htmlFor='message' className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
+                        <label htmlFor='message' className='block mb-2 text-sm font-medium text-gray-900text-white'>
                             Your message
                         </label>
                         <textarea

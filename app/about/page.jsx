@@ -26,8 +26,8 @@ export default function About() {
                         </a>
                     </span>
                 </div>
-                <hr className='w-64 h-px my-2 bg-gray-200 border-0 dark:bg-gray-700' />
-                <div className='p-4 text-justify text-xs'>
+                <hr className='w-64 h-px my-2 border-0 bg-gray-700' />
+                <div className='p-4 text-left text-xs'>
                     <p className='py-2'>
                         Reijo, a web developer adept in current frameworks, delivers a dynamic blend of creativity and technical expertise to each project. Reijo specializes at
                         creating immersive and user friendly web experiences, thanks to a strong foundation in languages such as HTML, CSS, and JAVASCRIPT, as well as knowledge of
@@ -49,25 +49,25 @@ export default function About() {
                             <span className='text-green-400'>/</span> Technical Skills
                         </h3>
                         <div className='w-11/12 flex justify-between mb-1'>
-                            <span className='text-xs dark:text-slate-300'>Docker</span>
-                            <span className='text-xs dark:text-slate-300'>50%</span>
+                            <span className='text-xs text-slate-300'>Docker</span>
+                            <span className='text-xs text-slate-300'>50%</span>
                         </div>
-                        <div className='w-11/12 bg-gray-200 rounded-full h-1.5 mb-4 dark:bg-gray-700'>
-                            <div className='bg-gray-600 h-1.5 rounded-full dark:bg-gray-300' style={{ width: '50%' }}></div>
-                        </div>
-                        <div className='w-11/12 flex justify-between mb-1'>
-                            <span className='text-xs dark:text-slate-300'>Laravel</span>
-                            <span className='text-xs dark:text-slate-300'>80%</span>
-                        </div>
-                        <div className='w-11/12 bg-gray-200 rounded-full h-1.5 mb-4 dark:bg-gray-700'>
-                            <div className='bg-gray-600 h-1.5 rounded-full dark:bg-gray-300' style={{ width: '80%' }}></div>
+                        <div className='w-11/12 rounded-full h-1.5 mb-4 bg-gray-700'>
+                            <div className='h-1.5 rounded-full bg-gray-300' style={{ width: '50%' }}></div>
                         </div>
                         <div className='w-11/12 flex justify-between mb-1'>
-                            <span className='text-xs dark:text-slate-300'>Next JS</span>
-                            <span className='text-xs dark:text-slate-300'>65%</span>
+                            <span className='text-xs text-slate-300'>Laravel</span>
+                            <span className='text-xs text-slate-300'>80%</span>
                         </div>
-                        <div className='w-11/12 bg-gray-200 rounded-full h-1.5 mb-4 dark:bg-gray-700'>
-                            <div className='bg-gray-600 h-1.5 rounded-full dark:bg-gray-300' style={{ width: '65%' }}></div>
+                        <div className='w-11/12 rounded-full h-1.5 mb-4 bg-gray-700'>
+                            <div className='h-1.5 rounded-full bg-gray-300' style={{ width: '80%' }}></div>
+                        </div>
+                        <div className='w-11/12 flex justify-between mb-1'>
+                            <span className='text-xs text-slate-300'>Next JS</span>
+                            <span className='text-xs text-slate-300'>65%</span>
+                        </div>
+                        <div className='w-11/12 rounded-full h-1.5 mb-4 bg-gray-700'>
+                            <div className='h-1.5 rounded-full bg-gray-300' style={{ width: '65%' }}></div>
                         </div>
                     </div>
                     <div className='py-2'>

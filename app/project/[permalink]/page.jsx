@@ -38,16 +38,16 @@ export default async function PojectDetails({ params }) {
                             Live Demo
                         </a>
                     </div>
-                    <hr className='w-full h-px my-2 bg-gray-200 border-0 dark:bg-gray-700' />
+                    <hr className='w-full h-px my-2 border-0 bg-gray-700' />
                     <h3 className='py-2 font-thin text-sm uppercase'>
                         <span className='text-green-400'>/</span> About this project
                     </h3>
-                    <hr className='w-48 h-px my-2 bg-gray-200 border-0 dark:bg-gray-700' />
+                    <hr className='w-48 h-px my-2 border-0 bg-gray-700' />
                     <p className='py-2 text-slate-300 text-xs'>{details.description}</p>
                     <h3 className='py-2 font-thin text-sm uppercase'>
                         <span className='text-green-400'>/</span> Technical Sheet
                     </h3>
-                    <hr className='w-48 h-px my-2 bg-gray-200 border-0 dark:bg-gray-700' />
+                    <hr className='w-48 h-px my-2 border-0 bg-gray-700' />
                     <p className='py-2 text-slate-300 text-xs'>Built with the following list below:</p>
                     <ul className='py-2 text-slate-300 text-xs'>
                         {tags &&
