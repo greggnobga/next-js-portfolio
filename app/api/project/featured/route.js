@@ -12,21 +12,21 @@ Database();
 
 /** GET. */
 export async function GET(request) {
-  /** Fetch all messages record. */
-  try {
-    /** Check for existing record. */
-    const featured = await Project.find({}).select('name description image tags permalink demo').limit(3).exec();
+    /** Fetch all messages record. */
+    try {
+        /** Check for existing record. */
+        const featured = await Project.find({}).select('name description image tags permalink demo').limit(3).exec();
 
-    /** Prevent user from sending multiple message. */
-    if (featured) {
-      /** Return message list. */
-      return NextResponse.json(featured);
-    } else {
-      /** Return warning message. */
-      return NextResponse.json({ message: 'No featured project so far.', status: 200 });
+        /** Prevent user from sending multiple message. */
+        if (featured) {
+            /** Return message list. */
+            return NextResponse.json(featured);
+        } else {
+            /** Return warning message. */
+            return NextResponse.json({ message: 'No featured project so far.', status: 200 });
+        }
+    } catch (error) {
+        /** Return error message. */
+        return NextResponse.json({ message: 'Unable to fetched featured project!', status: 500 });
     }
-  } catch (error) {
-    /** Return error message. */
-    return NextResponse.json({ message: 'Unable to fetched featured project!', status: 500 });
-  }
 }

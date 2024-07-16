@@ -20,7 +20,6 @@ export const listProject = () => async (dispatch, getState) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            cache: 'no-store',
         });
 
         /** Wait for the response. */
@@ -53,7 +52,6 @@ export const featuredProject = () => async (dispatch, getState) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            cache: 'no-store',
         });
 
         /** Wait for the response. */

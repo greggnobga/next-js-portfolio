@@ -15,11 +15,7 @@ export async function GET(request) {
     /** Fetch all messages record. */
     try {
         /** Check for existing record. */
-        const projects = await Project.find({})
-            .select('name description image tags permalink demo createdAt')
-            .limit(25)
-            .sort({ createdAt: -1 })
-            .exec();
+        const projects = await Project.find({}).select('name description image tags permalink demo createdAt').limit(25).sort({ createdAt: -1 }).exec();
 
         /** Prevent user from sending multiple message. */
         if (projects) {
