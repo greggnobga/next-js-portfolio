@@ -149,7 +149,7 @@ export default function Contact() {
                             required
                         />
                         {emailHasError ? <p className='input-message'>Please enter a valid email.</p> : ''}
-                        <label htmlFor='email' className='peer-focus:font-medium input-label'>
+                        <label htmlFor='email' className='peer-focus:font-medium input-label scroll-page'>
                             Email address
                         </label>
                     </div>
@@ -167,7 +167,7 @@ export default function Contact() {
                             required
                         />
                         {nameHasError ? <p className='input-message'>Please enter a valid name.</p> : ''}
-                        <label htmlFor='name' className='peer-focus:font-medium input-label'>
+                        <label htmlFor='name' className='peer-focus:font-medium input-label scroll-page'>
                             Name
                         </label>
                     </div>
@@ -185,12 +185,12 @@ export default function Contact() {
                             required
                         />
                         {titleHasError ? <p className='input-message'>Please enter a valid name.</p> : ''}
-                        <label htmlFor='name' className='peer-focus:font-medium input-label'>
+                        <label htmlFor='name' className='peer-focus:font-medium input-label scroll-page'>
                             Subject
                         </label>
                     </div>
                     <div className='relative z-0 w-full mb-6 group'>
-                        <label htmlFor='message' className='block mb-2 text-sm font-medium text-gray-900text-white'>
+                        <label htmlFor='message' className='block mb-2 text-sm font-medium text-gray-900text-white scroll-page'>
                             Your message
                         </label>
                         <textarea

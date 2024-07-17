@@ -8,7 +8,9 @@ export default function Card({ name, image, description, tags, permalink }) {
 
     /** Return something. */
     return (
-        <Link href={`project/${permalink}`} className='flex flex-col items-center rounded-lg shadow border border-gray-700 bg-gray-800 hover:bg-gray-700'>
+        <Link
+            href={`project/${permalink}`}
+            className='flex flex-col items-center rounded-lg shadow border border-gray-700 bg-gray-800 hover:bg-gray-700 transition-all hover:scale-95'>
             <Image className='object-cover object-top w-full h-48 rounded-t-lg' src={image} width={750} height={750} alt={name} />
             <div className='flex flex-col justify-between p-4 leading-normal items-stretch h-full'>
                 <h5 className='mb-2 text-sm font-bold tracking-tight  text-white'>{name}</h5>

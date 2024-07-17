@@ -103,7 +103,7 @@ export default function Login() {
     /** Return something. */
     return (
         <section className='p-2 flex min-h-screen flex-col gap-2 z-10' suppressHydrationWarning={true}>
-            <h1 className='p-2 font-thin uppercase text-sm'>
+            <h1 className='p-2 font-thin uppercase text-sm scroll-page'>
                 <span className='text-green-400'>/</span> Login
             </h1>
             {responseMessage ? <Notifications message={responseMessage} status={responseStatus} /> : ''}
@@ -123,7 +123,7 @@ export default function Login() {
                             required
                         />
                         {emailHasError ? <p className='input-message'>Please enter a valid email.</p> : ''}
-                        <label htmlFor='email' className='peer-focus:font-medium input-label'>
+                        <label htmlFor='email' className='peer-focus:font-medium input-label scroll-page'>
                             Email address
                         </label>
                     </div>
@@ -141,7 +141,7 @@ export default function Login() {
                             required
                         />
                         {passwordHasError ? <p className='input-message'>Please enter a valid password.</p> : ''}
-                        <label htmlFor='email' className='peer-focus:font-medium input-label'>
+                        <label htmlFor='email' className='peer-focus:font-medium input-label scroll-page'>
                             Password
                         </label>
                     </div>

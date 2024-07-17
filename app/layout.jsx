@@ -1,3 +1,6 @@
+/** Next. */
+import dynamic from 'next/dynamic';
+
 /** Store. */
 import StoreProvider from '../redux/store-provider';
 
@@ -23,7 +26,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang='en'>
-            <body className={`gotham text-slate-300 leading-5 ${montserrat.className}`}>
+            <head>
+                <script type='module' src='/js/animate.js' />
+            </head>
+            <body className={`gotham text-slate-300 leading-7 text-base ${montserrat.className}`}>
                 <StoreProvider>
                     <header>
                         <Nav />

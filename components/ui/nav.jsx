@@ -53,9 +53,9 @@ export default function Nav() {
     }
     /** Return something. */
     return (
-        <nav className='flex flex-row p-2 justify-around align-center text-slate-300'>
+        <nav className='flex flex-row p-2 justify-around align-center text-slate-300 scroll-animation'>
             <div className='text-left p-1 mt-3 w-6/12'>
-                <Link href='/' className='w-40 text-green-400 hover:text-slate-300 cursor-pointer'>
+                <Link href='/' className='w-40 text-green-400 hover:text-slate-300 cursor-pointer text-md hover:animatedanimate__animated hover:animate__bounce'>
                     <span className='font-bold'>&lt;/&gt;</span> Orion Dev
                 </Link>
             </div>

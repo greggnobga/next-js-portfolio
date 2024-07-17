@@ -33,27 +33,27 @@ export default async function PojectDetails({ params }) {
                 </div>
                 <div className='p-2'>
                     <div className='flex flex-wrap justify-between'>
-                        <h1 className=' text-green-400 uppercase'>{details.name}</h1>
+                        <h1 className=' text-green-400 uppercase scroll-page'>{details.name}</h1>
                         <a className='text-xs text-slate-300' href={details.demo} target='_blank'>
                             Live Demo
                         </a>
                     </div>
                     <hr className='w-full h-px my-2 border-0 bg-gray-700' />
-                    <h3 className='py-2 font-thin text-sm uppercase'>
+                    <h3 className='py-2 font-thin text-sm uppercase scroll-page'>
                         <span className='text-green-400'>/</span> About this project
                     </h3>
                     <hr className='w-48 h-px my-2 border-0 bg-gray-700' />
-                    <p className='py-2 text-slate-300 text-xs'>{details.description}</p>
-                    <h3 className='py-2 font-thin text-sm uppercase'>
+                    <p className='py-2 text-slate-300 text-xs scroll-page'>{details.description}</p>
+                    <h3 className='py-2 font-thin text-sm uppercase scroll-page'>
                         <span className='text-green-400'>/</span> Technical Sheet
                     </h3>
                     <hr className='w-48 h-px my-2 border-0 bg-gray-700' />
-                    <p className='py-2 text-slate-300 text-xs'>Built with the following list below:</p>
+                    <p className='py-2 text-slate-300 text-xs scroll-page'>Built with the following list below:</p>
                     <ul className='py-2 text-slate-300 text-xs'>
                         {tags &&
                             tags.map((item, id) => {
                                 return (
-                                    <li key={id} className='py-2 uppercase'>
+                                    <li key={id} className='py-2 uppercase scroll-page'>
                                         <Sprite id='arrow-forward' /> {item}
                                     </li>
                                 );

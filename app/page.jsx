@@ -15,7 +15,7 @@ export default async function Home() {
         <section className='p-2 flex flex-col min-h-screen gap-2'>
             <Hero />
             <div className='grid grid-cols-1 sm:grid-cols-2 place-items-center bg-slate-800 bg-opacity-20 w-full h-fit py-16'>
-                <div className='px-2 py-8'>
+                <div className='px-2 py-8 scroll-page'>
                     <h3 className='p-2 font-thin uppercase text-sm'>
                         <span className='text-green-400'>/</span> About Me
                     </h3>
@@ -30,7 +30,7 @@ export default async function Home() {
                         </span>
                     </Link>
                 </div>
-                <div className='p-2'>
+                <div className='p-2 scroll-page'>
                     <div className='p-2 flex flex-row flex-wrap justify-around align-center'>
                         <div className='w-32 sm:w-48 pb-4 text-center'>
                             <span className='text-3xl'>01</span> <span className='text-xs'>Years of experience</span>
@@ -56,41 +56,41 @@ export default async function Home() {
                 </div>
                 <div className='grid grid-cols-3 place-items-center w-full'>
                     <div className='p-1 text-xs sm:p-2 sm:text-sm'>
-                        <h2 className='text-sm font-thin'>Server</h2>
+                        <h2 className='text-sm font-thin scroll-page'>Server</h2>
                         <hr className='w-24 h-px my-1 border-0 bg-gray-700' />
-                        <p className='px-2 py-2'>
+                        <p className='px-2 py-2 scroll-page'>
                             <Sprite id='arrow-forward' /> Docker
                         </p>
-                        <p className='px-2 py-2'>
+                        <p className='px-2 py-2 scroll-page'>
                             <Sprite id='arrow-forward' /> Nginx
                         </p>
-                        <p className='px-2 py-2'>
+                        <p className='px-2 py-2 scroll-page'>
                             <Sprite id='arrow-forward' /> Apache
                         </p>
                     </div>
                     <div className='p-1 text-xs sm:p-2 sm:text-sm'>
-                        <h2 className='text-sm font-thin'>Backend</h2>
+                        <h2 className='text-sm font-thin scroll-page'>Backend</h2>
                         <hr className='w-24 h-px my-1 border-0 bg-gray-700' />
-                        <p className='px-2 py-2'>
+                        <p className='px-2 py-2 scroll-page'>
                             <Sprite id='arrow-forward' /> Laravel
                         </p>
-                        <p className='px-2 py-2'>
+                        <p className='px-2 py-2 scroll-page'>
                             <Sprite id='arrow-forward' /> Django
                         </p>
-                        <p className='px-2 py-2'>
+                        <p className='px-2 py-2 scroll-page'>
                             <Sprite id='arrow-forward' /> Node
                         </p>
                     </div>
                     <div className='p-1 text-xs sm:p-2 sm:text-sm'>
-                        <h2 className='text-sm font-thin'>Frontend</h2>
+                        <h2 className='text-sm font-thin scroll-page'>Frontend</h2>
                         <hr className='w-24 h-px my-1 border-0 bg-gray-700' />
-                        <p className='px-4 py-2'>
+                        <p className='px-4 py-2 scroll-page'>
                             <Sprite id='arrow-forward' /> Next JS
                         </p>
-                        <p className='px-4 py-2'>
+                        <p className='px-4 py-2 scroll-page'>
                             <Sprite id='arrow-forward' /> React
                         </p>
-                        <p className='px-4 py-2'>
+                        <p className='px-4 py-2 scroll-page'>
                             <Sprite id='arrow-forward' /> Tailwind
                         </p>
                     </div>
@@ -103,7 +103,7 @@ export default async function Home() {
                         <span className='text-green-400'>/</span> Featured Projects
                     </h3>
                 </div>
-                <div className='grid grid-cols-1 gap-2 sm:grid-cols-3 place-items-center w-full pt-4 pb-8'>
+                <div className='grid grid-cols-1 gap-2 sm:grid-cols-3 place-items-center w-full pt-4 pb-8 scroll-page'>
                     <Featured />
                 </div>
             </div>

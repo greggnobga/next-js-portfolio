@@ -9,9 +9,9 @@ export default function Hero() {
         <div className='grid grid-rows-6 gap-4 w-full h-fit hero-bg-image bg-cover bg-right bg-no-repeat sm:rounded'>
             <div className='row-span-5 grid sm:grid-cols-6 gap-2 p-2 place-items-center'>
                 <div className='col-span-4'>
-                    <div className='mt-4'>
+                    <div className='mt-4 scroll-page'>
                         <hr className='w-24 h-px my-2 border-0 bg-gray-700' />
-                        <h1 className='text-4xl p-2'>
+                        <h1 className='text-4xl p-2 animate__animated animate__fadeIn'>
                             Hello! I'm Reijo N, a <span className='text-green-400'>freelance full stack web developer</span>.
                         </h1>
                         <p className='text-xs text-left p-2'>
@@ -25,7 +25,7 @@ export default function Hero() {
                             </span>
                         </Link>
                     </div>
-                    <div className='mt-4'>
+                    <div className='mt-4 scroll-page'>
                         <hr className='w-24 h-px my-2 border-0 bg-gray-700' />
                         <h2 className='text-xl p-2'>About Me</h2>
                         <p className='text-xs text-left p-2'>
@@ -38,7 +38,7 @@ export default function Hero() {
                             </span>
                         </Link>
                     </div>
-                    <div className='mt-4'>
+                    <div className='mt-4 scroll-page'>
                         <hr className='w-24 h-px my-2 border-0 bg-gray-700' />
                         <h2 className='text-xl p-2'>My Work</h2>
                         <p className='text-xs text-left p-2'>
@@ -54,7 +54,7 @@ export default function Hero() {
                 </div>
             </div>
             <div className='row-span-1 grid grid-cols-1 place-items-end'>
-                <div className='mt-2 mb-4 px-2 w-full'>
+                <div className='mt-2 mb-4 px-2 w-full scroll-page'>
                     <hr className='w-full h-px my-2 border-0 bg-gray-700' />
                     <h2 className='text-right text-xs p-2'>Follow Me</h2>
                     <div className='text-right'>
