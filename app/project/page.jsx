@@ -1,6 +1,14 @@
 /** Components. */
 import Projects from '../../components/projects';
 
+/** Metadata. */
+export const metadata = {
+    title: 'Projects | Freelance Full Stack Web Developer',
+    description: 'Few projects for your reference.',
+    keywords: 'full stack web developer, freelance web developer, react js developer, next js developer',
+    referrer: 'no-referrer',
+};
+
 export default async function ProjectList() {
     /** Return something. */
     return (

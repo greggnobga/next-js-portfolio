@@ -1,10 +1,12 @@
 'use client';
 
+/** Next. */
+import { useRouter } from 'next/navigation';
+
 /** React. */
 import { useEffect } from 'react';
 
 /** Vendor. */
-import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 
 /** Action. */

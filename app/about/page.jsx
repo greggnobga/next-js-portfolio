@@ -1,6 +1,14 @@
 /** Components. */
 import Sprite from '../../components/ui/sprite';
 
+/** Metadata. */
+export const metadata = {
+    title: 'About | Freelance Full Stack Web Developer',
+    description: 'Knowing us better make you fell secure.',
+    keywords: 'full stack web developer, freelance web developer, react js developer, next js developer',
+    referrer: 'no-referrer',
+};
+
 export default function About() {
     return (
         <section className='p-2 flex flex-col flex-wrap min-h-screen'>

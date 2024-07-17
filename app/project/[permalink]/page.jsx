@@ -1,4 +1,4 @@
-/** Vendor. */
+/** Next. */
 import Image from 'next/image';
 
 /** Components. */
@@ -9,8 +9,25 @@ export async function getDetails({ permalink }) {
     /** Get data from api. */
     const details = await fetch(`${process.env.HOST}/api/project/${permalink}`, { cache: 'no-store' }).then((data) => data.json());
 
+    console.log();
     /** Return something. */
     return details ? details : {};
+}
+
+export async function generateMetadata({ params }) {
+    /** Gert parametr value. */
+    const { permalink } = await params;
+
+    /** Get data from api. */
+    const details = await fetch(`${process.env.HOST}/api/project/${permalink}`, { cache: 'no-store' }).then((data) => data.json());
+
+    console.log(details);
+    /** Return something. */
+    return {
+        title: `${details.name} | Freelance Full Stack Web Developer`,
+        description: details.description,
+        keywords: details.tags,
+    };
 }
 
 /** Default export. */

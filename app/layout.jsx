@@ -15,11 +15,14 @@ import { Montserrat } from 'next/font/google';
 import '../styles/globals.css';
 import '../styles/vendors/hamburger.css';
 
+/** Font. */
 const montserrat = Montserrat({ subsets: ['latin'] });
 
+/** Metadata. */
 export const metadata = {
-    title: 'Reijo N | Full Stack Web Developer',
+    title: 'Freelance Full Stack Web Developer',
     description: 'Success starts with a single step.',
+    keywords: 'full stack web developer, freelance web developer, react js developer, next js developer',
     referrer: 'no-referrer',
 };
 
