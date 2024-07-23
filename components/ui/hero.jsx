@@ -29,8 +29,8 @@ export default function Hero() {
                         <hr className='w-24 h-px my-2 border-0 bg-gray-700' />
                         <h2 className='text-xl p-2'>About Me</h2>
                         <p className='text-xs text-left p-2'>
-                            In the remote region of the southern Philippines, technology is as scarce as gold. A boy was attracted by the concept of making anything just by sitting
-                            in front of a flickering screen. A dream becomes a reality through determination and hard effort.
+                            In the remote region of southern Philippines, technology is as scarce as gold. A boy was attracted by the concept of making anything just by sitting in
+                            front of a flickering screen. A dream becomes a reality through determination and hard effort.
                         </p>
                         <Link href='/about' className='block text-right mx-2'>
                             <span className='border-b pb-2 text-xs nav-hover'>
